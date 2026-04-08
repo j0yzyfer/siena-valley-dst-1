@@ -1,0 +1,2109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Siena Valley DST I — BD/RIA Fact Sheet</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,700&family=IBM+Plex+Sans:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --green-dark: #1b4332;
+      --green-forest: #012d20;
+      --gold: #b5913a;
+      --black: #121212;
+      --body: #5f5f5f;
+      --border: #e5e5e5;
+      --bg-light: #f7f7f7;
+      --white: #ffffff;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      color: var(--black);
+      background: var(--white);
+      overflow-x: hidden;
+    }
+
+    /* ─── NAV ─────────────────────────────────────────── */
+    .nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(255,255,255,0.9);
+      backdrop-filter: blur(6px);
+      border-bottom: 1px solid var(--border);
+      height: 80px;
+    }
+    .nav-inner {
+      max-width: 1440px;
+      margin: 0 auto;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 48px;
+    }
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 2px;
+      text-decoration: none;
+    }
+    .nav-logo-oq {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .nav-logo-oq img { width: 25px; height: 25px; object-fit: contain; }
+    .nav-logo-oq-text {
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-size: 7px;
+      color: var(--green-forest);
+      text-transform: uppercase;
+      line-height: 1.2;
+    }
+    .nav-logo-oq-text strong { font-weight: 600; }
+    .nav-logo-oq-text span { font-weight: 400; display: block; }
+    .nav-divider {
+      width: 1px;
+      height: 26px;
+      background: var(--border);
+      margin: 0 13px;
+    }
+    .nav-logo-sv {
+      display: flex;
+      align-items: center;
+    }
+    .nav-logo-sv-inner {
+      position: relative;
+      width: 108px;
+      height: 26px;
+    }
+    .nav-logo-sv-inner img { position: absolute; display: block; }
+    .sv-wordmark { top: 1px; left: 0; width: 74px; height: 14px; }
+    .sv-dst      { top: 18px; left: 45px; width: 29px; height: 8px; }
+    .sv-star     { top: 0; left: 79px; width: 26px; height: 26px; }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 40px;
+    }
+    .nav-links a {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 11px;
+      letter-spacing: 1.1px;
+      text-transform: uppercase;
+      color: var(--black);
+      text-decoration: none;
+      transition: color 0.2s;
+      white-space: nowrap;
+    }
+    .nav-links a:hover { color: var(--green-dark); }
+    .nav-cta {
+      background: var(--green-dark);
+      color: var(--white);
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 10px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 12px 24px;
+      display: inline-block;
+      white-space: nowrap;
+      transition: background 0.2s;
+    }
+    .nav-cta:hover { background: #143728; }
+    .nav-hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+    }
+    .nav-hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--black);
+      transition: 0.3s;
+    }
+
+    /* ─── HERO ────────────────────────────────────────── */
+    .hero {
+      position: relative;
+      height: 100vh;
+      min-height: 600px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('https://www.figma.com/api/mcp/asset/04c5c500-f2c2-4aa8-800c-3a0876d373b5');
+      background-size: cover;
+      background-position: center;
+    }
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.38);
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      max-width: 900px;
+      padding: 0 24px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+    }
+    .hero-eyebrow {
+      font-weight: 700;
+      font-size: 10px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.8);
+    }
+    .hero-title {
+      font-weight: 700;
+      font-size: clamp(48px, 7.5vw, 96px);
+      line-height: 1;
+      letter-spacing: -2.4px;
+      color: var(--white);
+    }
+    .hero-subtitle {
+      font-weight: 300;
+      font-style: italic;
+      font-size: clamp(16px, 1.9vw, 24px);
+      line-height: 1.33;
+      color: rgba(255,255,255,0.9);
+      max-width: 700px;
+    }
+    .hero-btn {
+      margin-top: 32px;
+      display: inline-block;
+      background: var(--white);
+      color: var(--green-dark);
+      font-weight: 700;
+      font-size: 12px;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 17px 40px;
+      transition: opacity 0.2s;
+    }
+    .hero-btn:hover { opacity: 0.88; }
+    .hero-confidential {
+      position: absolute;
+      top: 100px;
+      right: 48px;
+      z-index: 3;
+      font-weight: 700;
+      font-size: 9px;
+      letter-spacing: 0.9px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.4);
+    }
+
+    /* Stat bar */
+    .hero-stat-bar {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      z-index: 3;
+      background: rgba(255,255,255,0.1);
+      backdrop-filter: blur(12px);
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+    .hero-stat-inner {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+    }
+    .hero-stat-item {
+      padding: 32px;
+      border-right: 1px solid rgba(255,255,255,0.1);
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .hero-stat-item:last-child { border-right: none; }
+    .hero-stat-label {
+      font-weight: 700;
+      font-size: 10px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.6);
+    }
+    .hero-stat-value {
+      font-weight: 700;
+      font-size: 24px;
+      line-height: 1.33;
+      color: var(--white);
+    }
+    .hero-stat-value.gold { color: var(--gold); }
+
+    /* ─── SECTION SHARED ──────────────────────────────── */
+    section { width: 100%; }
+    .section-inner {
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 128px 48px;
+    }
+    .section-eyebrow {
+      font-weight: 700;
+      font-size: 11px;
+      letter-spacing: 1.1px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 24px;
+    }
+    .section-eyebrow.center { text-align: center; }
+    .section-h2 {
+      font-weight: 700;
+      font-size: clamp(30px, 3.75vw, 48px);
+      letter-spacing: -1.2px;
+      line-height: 1;
+      color: var(--black);
+      margin-bottom: 24px;
+    }
+    .section-h2.center { text-align: center; }
+    .section-h2.green { color: var(--green-dark); }
+    .section-h2.white { color: var(--white); }
+    .section-h2.sm {
+      font-size: clamp(24px, 2.3vw, 30px);
+      letter-spacing: -0.75px;
+    }
+    .section-h2.md {
+      font-size: clamp(26px, 2.8vw, 36px);
+      letter-spacing: -0.9px;
+    }
+
+    /* ─── SECTION 2: OPPORTUNITY ──────────────────────── */
+    #opportunity {}
+    .opp-grid {
+      display: grid;
+      grid-template-columns: 7fr 5fr;
+      gap: 80px;
+      align-items: start;
+    }
+    .opp-body p {
+      font-weight: 300;
+      font-size: 18px;
+      line-height: 1.625;
+      color: var(--body);
+      margin-bottom: 31px;
+    }
+    .opp-body p:last-child { margin-bottom: 0; }
+    .opp-sidebar {
+      background: var(--bg-light);
+      border-bottom: 1px solid var(--border);
+    }
+    .opp-sidebar-head {
+      padding: 40px 40px 17px;
+      border-bottom: 1px solid var(--border);
+      font-weight: 700;
+      font-size: 14px;
+      letter-spacing: 1.4px;
+      text-transform: uppercase;
+      color: var(--black);
+    }
+    .opp-sidebar-body { padding: 32px 40px 41px; }
+    .opp-row {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      padding: 8px 0;
+      border-bottom: 1px solid var(--border);
+      gap: 16px;
+    }
+    .opp-row:last-child { border-bottom: none; }
+    .opp-row-label {
+      font-weight: 400;
+      font-size: 12px;
+      color: var(--gold);
+      flex-shrink: 0;
+    }
+    .opp-row-value {
+      font-weight: 700;
+      font-size: 12px;
+      color: var(--black);
+      text-align: right;
+    }
+    .opp-row-value.green { color: var(--green-dark); }
+
+    /* ─── SECTION 3: PORTFOLIO ────────────────────────── */
+    #portfolio { background: var(--bg-light); }
+    .portfolio-header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      margin-bottom: 80px;
+    }
+    .portfolio-header-left { max-width: 672px; }
+    .portfolio-subtitle {
+      font-weight: 300;
+      font-style: italic;
+      font-size: 14px;
+      color: var(--body);
+      margin-top: 8px;
+    }
+    .asset-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      margin-bottom: 1px;
+    }
+    .asset-card {
+      background: var(--white);
+      flex: 1 0 180px;
+      min-height: 380px;
+      padding: 32px;
+      display: flex;
+      flex-direction: column;
+    }
+    .asset-number {
+      font-weight: 700;
+      font-size: 10px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 24px;
+    }
+    .asset-name {
+      font-weight: 700;
+      font-size: 20px;
+      line-height: 1.4;
+      color: var(--black);
+      margin-bottom: 16px;
+    }
+    .asset-desc {
+      font-weight: 300;
+      font-size: 14px;
+      line-height: 1.625;
+      color: var(--body);
+      flex: 1;
+    }
+    .asset-meta {
+      margin-top: 32px;
+      border-top: 1px solid var(--border);
+      padding-top: 16px;
+    }
+    .asset-meta-row {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 8px;
+    }
+    .asset-meta-row:last-child { margin-bottom: 0; }
+    .asset-meta-label {
+      font-weight: 400;
+      font-size: 11px;
+      letter-spacing: 0.55px;
+      text-transform: uppercase;
+      color: var(--body);
+    }
+    .asset-meta-value {
+      font-weight: 700;
+      font-size: 11px;
+      letter-spacing: 0.55px;
+      text-transform: uppercase;
+      color: var(--black);
+    }
+    .portfolio-map {
+      width: 100%;
+      max-height: 640px;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+      filter: saturate(0);
+      margin-top: 80px;
+    }
+
+    /* ─── SECTION 4: THESIS ───────────────────────────── */
+    #thesis {}
+    .thesis-header {
+      text-align: center;
+      margin-bottom: 96px;
+    }
+    .thesis-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 64px;
+    }
+    .pillar-num {
+      font-weight: 800;
+      font-size: 60px;
+      line-height: 1;
+      color: var(--border);
+      margin-bottom: 0;
+    }
+    .pillar-title {
+      font-weight: 700;
+      font-size: 24px;
+      line-height: 1.33;
+      color: var(--black);
+      margin: 16px 0;
+    }
+    .pillar-body {
+      font-weight: 300;
+      font-size: 16px;
+      line-height: 1.625;
+      color: var(--body);
+    }
+
+    /* ─── SECTION 5: GROUND LEASE ─────────────────────── */
+    #ground-lease { background: var(--green-forest); }
+    #ground-lease .section-inner { padding: 128px 48px; }
+    .lease-grid {
+      display: grid;
+      grid-template-columns: 4fr 8fr;
+      gap: 80px;
+      align-items: start;
+    }
+    .lease-left {}
+    .lease-title {
+      font-weight: 700;
+      font-size: clamp(24px, 2.3vw, 30px);
+      line-height: 1.2;
+      letter-spacing: -0.75px;
+      color: var(--white);
+      margin-bottom: 32px;
+    }
+    .lease-body {
+      font-weight: 300;
+      font-size: 16px;
+      line-height: 1.625;
+      color: rgba(255,255,255,0.7);
+      margin-bottom: 16px;
+      padding-bottom: 16px;
+    }
+    .lease-pullquote {
+      background: rgba(255,255,255,0.05);
+      border-left: 2px solid var(--gold);
+      padding: 24px 24px 24px 26px;
+      font-style: italic;
+      font-size: 12px;
+      line-height: 1.33;
+      color: rgba(255,255,255,0.6);
+    }
+    .lease-right {}
+    .lease-chart-label {
+      font-weight: 700;
+      font-size: 10px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 40px;
+    }
+    /* Interactive lease chart */
+    .lease-chart-wrap {
+      position: relative;
+      margin-bottom: 0;
+    }
+    .lease-chart-interactive {
+      display: flex;
+      align-items: flex-end;
+      gap: 8px;
+      height: 256px;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      padding-bottom: 1px;
+    }
+    .lease-bar {
+      flex: 1;
+      min-width: 0;
+      background: #b5913a;
+      cursor: pointer;
+      transition: background 0.15s, opacity 0.15s;
+      position: relative;
+    }
+    .lease-bar.zero {
+      background: rgba(255,255,255,0.12);
+      cursor: default;
+    }
+    .lease-bar:not(.zero):hover {
+      background: #d4a843;
+      opacity: 1;
+    }
+    .lease-bar.active { background: #d4a843; }
+    .lease-tooltip {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(255,255,255,0.97);
+      color: #121212;
+      padding: 10px 14px;
+      pointer-events: none;
+      z-index: 10;
+      opacity: 0;
+      transition: opacity 0.15s;
+      white-space: nowrap;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+      min-width: 160px;
+      text-align: center;
+    }
+    .lease-tooltip.visible { opacity: 1; }
+    .lease-tooltip-date {
+      font-weight: 700;
+      font-size: 10px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: #5f5f5f;
+      margin-bottom: 4px;
+    }
+    .lease-tooltip-val {
+      font-weight: 700;
+      font-size: 20px;
+      color: #b5913a;
+      letter-spacing: -0.5px;
+    }
+    .lease-table-wrap {
+      border-top: 1px solid rgba(255,255,255,0.1);
+      padding-top: 24px;
+      margin-top: 0;
+    }
+    .lease-data-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    .lease-data-table th, .lease-data-table td {
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      font-size: 12px;
+      text-align: left;
+    }
+    .lease-data-table th {
+      font-weight: 700;
+      font-size: 10px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.5);
+    }
+    .lease-data-table td:first-child { color: rgba(255,255,255,0.6); font-weight: 400; }
+    .lease-data-table td:last-child { color: #b5913a; font-weight: 700; text-align: right; }
+    .lease-data-table tr.zero-row td { color: rgba(255,255,255,0.3); }
+    .lease-data-table tr.zero-row td:last-child { color: rgba(255,255,255,0.3); }
+
+    .lease-expand {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      padding: 17px 16px 16px 0;
+      margin-top: 0;
+    }
+    .lease-expand-label {
+      font-weight: 700;
+      font-size: 10px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.6);
+      cursor: pointer;
+    }
+    .lease-expand svg { opacity: 0.6; }
+
+    /* ─── SECTION 6: ECONOMICS ────────────────────────── */
+    #economics {}
+    .econ-header { margin-bottom: 80px; }
+    .econ-subhead {
+      font-weight: 300;
+      font-size: 18px;
+      line-height: 1.56;
+      color: var(--body);
+      margin-top: 24px;
+    }
+    .metric-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 32px;
+      margin-bottom: 80px;
+    }
+    .metric-card {
+      background: var(--bg-light);
+      border: 1px solid var(--border);
+      padding: 41px;
+    }
+    .metric-label {
+      font-weight: 700;
+      font-size: 10px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--body);
+      margin-bottom: 12px;
+    }
+    .metric-value {
+      font-weight: 700;
+      font-size: 30px;
+      line-height: 1.2;
+      color: var(--black);
+    }
+    .cashflow-box {
+      background: var(--bg-light);
+      border-bottom: 1px solid var(--border);
+      padding: 48px;
+    }
+    .cashflow-label {
+      font-weight: 700;
+      font-size: 11px;
+      letter-spacing: 1.1px;
+      text-transform: uppercase;
+      color: var(--body);
+      margin-bottom: 32px;
+    }
+    .cashflow-chart {
+      display: flex;
+      align-items: flex-end;
+      gap: 6px;
+      height: 256px;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1px;
+      padding-top: 16px;
+    }
+    .cashflow-bar { flex: 1; min-width: 0; }
+    .cf-chart-wrap { position: relative; }
+    .cashflow-chart {
+      display: flex;
+      align-items: flex-end;
+      gap: 6px;
+      height: 256px;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1px;
+      padding-top: 16px;
+    }
+    .cf-bar {
+      flex: 1;
+      min-width: 0;
+      cursor: pointer;
+      transition: filter 0.15s, opacity 0.15s;
+    }
+    .cf-bar.zero { cursor: default; }
+    .cf-bar:not(.zero):not(.initial):hover { filter: brightness(1.2); }
+    .cf-bar.active { filter: brightness(1.2); }
+    .cf-tooltip {
+      position: absolute;
+      background: rgba(18,18,18,0.95);
+      color: #fff;
+      padding: 10px 14px;
+      pointer-events: none;
+      z-index: 10;
+      opacity: 0;
+      transition: opacity 0.15s;
+      white-space: nowrap;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+      min-width: 160px;
+      text-align: center;
+    }
+    .cf-tooltip.visible { opacity: 1; }
+    .cf-tooltip-date {
+      font-weight: 700;
+      font-size: 10px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.5);
+      margin-bottom: 4px;
+    }
+    .cf-tooltip-val {
+      font-weight: 700;
+      font-size: 18px;
+      letter-spacing: -0.5px;
+    }
+    .cf-tooltip-val.positive { color: #b5913a; }
+    .cf-tooltip-val.exit     { color: #6dbf8c; }
+    .cf-tooltip-val.negative { color: #ff7f7f; }
+
+    .cashflow-note {
+      font-weight: 500;
+      font-size: 10px;
+      letter-spacing: 1px;
+      text-transform: none;
+      color: var(--body);
+      text-align: center;
+      opacity: 0.6;
+      margin-top: 32px;
+    }
+
+    /* ─── SECTION 7: COMPENSATION ─────────────────────── */
+    #compensation { background: var(--bg-light); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .comp-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 96px;
+      align-items: start;
+    }
+    .comp-eyebrow {
+      font-weight: 700;
+      font-size: 11px;
+      letter-spacing: 1.1px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 24px;
+    }
+    .comp-h2 {
+      font-weight: 700;
+      font-size: clamp(22px, 2.3vw, 30px);
+      color: var(--black);
+      margin-bottom: 24px;
+    }
+    .comp-table { margin-top: 16px; }
+    .comp-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 0 17px;
+      border-bottom: 1px solid var(--border);
+      gap: 16px;
+    }
+    .comp-row-label {
+      font-weight: 500;
+      font-size: 14px;
+      letter-spacing: 1.4px;
+      text-transform: uppercase;
+      color: var(--body);
+    }
+    .comp-row-value {
+      font-weight: 700;
+      font-size: 16px;
+      color: var(--black);
+      text-align: right;
+    }
+    .waterfall-h2 {
+      font-weight: 700;
+      font-size: clamp(22px, 2.3vw, 30px);
+      color: var(--black);
+      margin-bottom: 40px;
+      padding-top: 40px;
+    }
+    .waterfall-steps { display: flex; flex-direction: column; gap: 48px; }
+    .waterfall-step { display: flex; gap: 32px; align-items: flex-start; }
+    .step-num {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 1px solid var(--green-dark);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 16px;
+      color: var(--green-dark);
+      flex-shrink: 0;
+    }
+    .step-num.filled {
+      background: var(--green-dark);
+      color: var(--white);
+      border-color: var(--green-dark);
+    }
+    .step-title {
+      font-weight: 700;
+      font-size: 12px;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      color: var(--black);
+      margin-bottom: 8px;
+    }
+    .step-body {
+      font-weight: 300;
+      font-size: 14px;
+      line-height: 1.625;
+      color: var(--body);
+    }
+    .step-body strong { font-weight: 700; color: var(--black); }
+
+    /* ─── SECTION 8: SPONSOR ──────────────────────────── */
+    #sponsor {}
+    .sponsor-header {
+      text-align: center;
+      margin-bottom: 80px;
+    }
+    .sponsor-subhead {
+      font-weight: 300;
+      font-style: italic;
+      font-size: 20px;
+      line-height: 1.4;
+      color: var(--body);
+      text-align: center;
+      max-width: 768px;
+      margin: 24px auto 0;
+    }
+    .capability-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      margin-bottom: 80px;
+    }
+    .capability-cell {
+      background: var(--white);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 32px;
+      text-align: center;
+      gap: 16px;
+    }
+    .capability-icon { height: 32px; display: flex; align-items: center; justify-content: center; }
+    .capability-icon img {
+      max-height: 28px;
+      max-width: 32px;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+    }
+    .capability-label {
+      font-weight: 700;
+      font-size: 9px;
+      letter-spacing: 0.9px;
+      text-transform: uppercase;
+      color: var(--black);
+    }
+    .sponsor-body {
+      max-width: 896px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .sponsor-body p {
+      font-weight: 300;
+      font-size: 18px;
+      line-height: 1.625;
+      color: var(--body);
+      margin-bottom: 23px;
+    }
+    .sponsor-body p:last-child { margin-bottom: 0; }
+
+    /* ─── SECTION 9: SUITABILITY ──────────────────────── */
+    #suitability { background: var(--bg-light); border-top: 1px solid var(--border); }
+    .suitability-header {
+      text-align: center;
+      padding-bottom: 48px;
+    }
+    .suitability-sub {
+      font-weight: 400;
+      font-size: 14px;
+      letter-spacing: 1.4px;
+      text-transform: uppercase;
+      color: var(--body);
+      margin-top: 16px;
+    }
+    .suitability-panels {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      margin-bottom: 48px;
+    }
+    .suit-panel {
+      background: var(--white);
+      padding: 64px;
+    }
+    .suit-panel-header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 40px;
+    }
+    .suit-panel-header img { width: 24px; height: 24px; object-fit: contain; }
+    .suit-panel-title {
+      font-weight: 700;
+      font-size: 20px;
+      color: var(--black);
+    }
+    .suit-list { list-style: none; display: flex; flex-direction: column; gap: 24px; }
+    .suit-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      font-weight: 300;
+      font-size: 14px;
+      line-height: 1.625;
+      color: var(--body);
+    }
+    .suit-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      flex-shrink: 0;
+      margin-top: 6px;
+    }
+    .suit-dot.gold { background: var(--gold); }
+    .suit-dot.grey { background: var(--border); }
+    .suitability-note {
+      text-align: center;
+      font-style: italic;
+      font-size: 10px;
+      color: var(--body);
+    }
+
+    /* ─── SECTION 10: RISKS ───────────────────────────── */
+    #risks {}
+    #risks .section-inner {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .risks-head {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 17px;
+      margin-bottom: 32px;
+    }
+    .risks-intro {
+      font-weight: 300;
+      font-size: 16px;
+      line-height: 1.5;
+      color: var(--body);
+      margin-bottom: 48px;
+    }
+    .accordion { display: flex; flex-direction: column; gap: 8px; }
+    .accordion-item { border: 1px solid var(--border); }
+    .accordion-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 24px;
+      cursor: pointer;
+      user-select: none;
+    }
+    .accordion-header:hover { background: var(--bg-light); }
+    .accordion-title {
+      font-weight: 700;
+      font-size: 11px;
+      letter-spacing: 1.1px;
+      text-transform: uppercase;
+      color: var(--black);
+    }
+    .accordion-title.muted { color: rgba(18,18,18,0.4); font-style: italic; }
+    .accordion-icon {
+      width: 12px;
+      height: 7px;
+      transition: transform 0.3s;
+      flex-shrink: 0;
+    }
+    .accordion-icon.open { transform: rotate(180deg); }
+    .accordion-icon-right {
+      width: 7px;
+      height: 12px;
+      flex-shrink: 0;
+    }
+    .accordion-body {
+      display: none;
+      padding: 0 24px 24px;
+      font-weight: 300;
+      font-size: 14px;
+      line-height: 1.6;
+      color: var(--body);
+    }
+    .accordion-body.open { display: block; }
+
+    /* ─── SECTION 12: CTA ─────────────────────────────── */
+    #contact { background: var(--green-dark); }
+    #contact .section-inner {
+      padding: 128px 192px 144px;
+      max-width: none;
+    }
+    .contact-inner {
+      max-width: 896px;
+      margin: 0 auto;
+    }
+    .contact-title {
+      font-weight: 700;
+      font-size: clamp(32px, 3.75vw, 48px);
+      letter-spacing: -1.2px;
+      color: var(--white);
+      text-align: center;
+      margin-bottom: 32px;
+    }
+    .contact-sub {
+      font-weight: 300;
+      font-size: 18px;
+      line-height: 1.56;
+      color: rgba(255,255,255,0.6);
+      text-align: center;
+      margin-bottom: 32px;
+    }
+    .contact-form {
+      background: var(--white);
+      padding: 80px 48px 48px;
+    }
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 32px;
+      margin-bottom: 32px;
+    }
+    .form-group { display: flex; flex-direction: column; gap: 8px; }
+    .form-label {
+      font-weight: 700;
+      font-size: 10px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--body);
+    }
+    .form-input, .form-select {
+      height: 54px;
+      background: var(--bg-light);
+      border: 1px solid var(--border);
+      padding: 0 16px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 14px;
+      color: var(--black);
+      width: 100%;
+      appearance: none;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .form-input:focus, .form-select:focus { border-color: var(--green-dark); }
+    .form-select-wrap { position: relative; }
+    .form-select-wrap::after {
+      content: '';
+      position: absolute;
+      right: 16px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 0;
+      height: 0;
+      border-left: 5px solid transparent;
+      border-right: 5px solid transparent;
+      border-top: 6px solid var(--body);
+      pointer-events: none;
+    }
+    .form-checkbox-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      margin-bottom: 32px;
+      padding-bottom: 16px;
+    }
+    .form-checkbox {
+      width: 16px;
+      height: 16px;
+      border: 1px solid var(--border);
+      background: var(--white);
+      flex-shrink: 0;
+      margin-top: 4px;
+      cursor: pointer;
+      appearance: none;
+      outline: none;
+    }
+    .form-checkbox:checked { background: var(--green-dark); }
+    .form-checkbox-label {
+      font-weight: 400;
+      font-size: 12px;
+      line-height: 1.625;
+      color: var(--body);
+    }
+    .form-submit {
+      width: 100%;
+      background: var(--green-dark);
+      color: var(--white);
+      border: none;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 12px;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      padding: 20px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .form-submit:hover { background: #143728; }
+
+    /* ─── FOOTER ──────────────────────────────────────── */
+    footer {
+      background: var(--white);
+      border-top: 1px solid var(--border);
+    }
+    .footer-inner {
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 97px 48px 96px;
+    }
+    .footer-disclaimer {
+      background: var(--bg-light);
+      border-bottom: 1px solid var(--border);
+      padding: 39px 80px 41px;
+      text-align: center;
+      margin-bottom: 80px;
+    }
+    .footer-disclaimer p {
+      font-weight: 400;
+      font-size: 11px;
+      letter-spacing: 0.55px;
+      text-transform: uppercase;
+      line-height: 1.625;
+      color: var(--body);
+      opacity: 0.7;
+      max-width: 1014px;
+      margin: 0 auto;
+    }
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+    .footer-brand-name {
+      font-weight: 800;
+      font-size: 24px;
+      letter-spacing: -1.2px;
+      color: var(--green-dark);
+      margin-bottom: 16px;
+    }
+    .footer-copy {
+      font-weight: 700;
+      font-size: 10px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--body);
+      line-height: 1.5;
+    }
+    .footer-nav {
+      display: grid;
+      grid-template-columns: repeat(3, auto);
+      gap: 48px;
+    }
+    .footer-nav-col { display: flex; flex-direction: column; gap: 16px; }
+    .footer-nav-col a, .footer-nav-col span {
+      font-weight: 700;
+      font-size: 11px;
+      letter-spacing: 1.1px;
+      text-transform: uppercase;
+      color: var(--black);
+      text-decoration: none;
+      display: block;
+    }
+    .footer-nav-col span { color: var(--body); }
+    .footer-nav-col a:hover { color: var(--green-dark); }
+
+    /* ─── MOBILE NAV DRAWER ───────────────────────────── */
+    .nav-drawer {
+      display: none;
+      position: fixed;
+      top: 80px; left: 0; right: 0;
+      background: rgba(255,255,255,0.98);
+      backdrop-filter: blur(6px);
+      border-bottom: 1px solid var(--border);
+      z-index: 99;
+      padding: 24px 24px 32px;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .nav-drawer.open { display: flex; }
+    .nav-drawer a {
+      font-weight: 700;
+      font-size: 13px;
+      letter-spacing: 1.1px;
+      text-transform: uppercase;
+      color: var(--black);
+      text-decoration: none;
+    }
+    .nav-drawer-cta {
+      background: var(--green-dark) !important;
+      color: var(--white) !important;
+      padding: 14px 24px;
+      text-align: center;
+      margin-top: 8px;
+    }
+
+    /* ─── RESPONSIVE ──────────────────────────────────── */
+    @media (max-width: 1024px) {
+      .nav-links { display: none; }
+      .nav-hamburger { display: flex; }
+      .hero-confidential { display: none; }
+      .section-inner { padding: 80px 32px; }
+      #contact .section-inner { padding: 80px 32px; }
+      .opp-grid { grid-template-columns: 1fr; }
+      .lease-grid { grid-template-columns: 1fr; }
+      .thesis-grid { grid-template-columns: 1fr; }
+      .comp-grid { grid-template-columns: 1fr; gap: 64px; }
+      .metric-grid { grid-template-columns: repeat(2, 1fr); }
+      .capability-grid { grid-template-columns: repeat(3, 1fr); }
+      .suitability-panels { grid-template-columns: 1fr; }
+      .footer-bottom { flex-direction: column; gap: 48px; }
+    }
+    @media (max-width: 768px) {
+      .nav-inner { padding: 0 24px; }
+      .hero-stat-inner { grid-template-columns: repeat(2, 1fr) !important; }
+      .hero-stat-item:nth-child(5) { border-right: none; }
+      .metric-grid { grid-template-columns: 1fr 1fr; }
+      .capability-grid { grid-template-columns: repeat(2, 1fr); }
+      .suit-panel { padding: 32px; }
+      .contact-form { padding: 40px 24px; }
+      .form-grid { grid-template-columns: 1fr; }
+      .footer-nav { grid-template-columns: 1fr 1fr; }
+      .footer-disclaimer { padding: 32px 24px; }
+      .footer-inner { padding: 64px 24px; }
+    }
+    @media (max-width: 480px) {
+      .hero-title { font-size: 38px; letter-spacing: -1px; }
+      .metric-grid { grid-template-columns: 1fr; }
+      .capability-grid { grid-template-columns: 1fr 1fr; }
+      .hero-stat-inner { grid-template-columns: 1fr 1fr; }
+      .hero-stat-item { padding: 20px 16px; }
+      .asset-grid { flex-direction: column; }
+      .asset-card { min-height: auto; }
+      .section-inner { padding: 64px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ─── NAV ─────────────────────────────────────────── -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="nav-logo" href="#">
+      <div class="nav-logo-oq">
+        <img src="https://www.figma.com/api/mcp/asset/fecfc96b-6ff1-497c-bb4d-92d692485a4b" alt="Oak Quarry icon" />
+        <div class="nav-logo-oq-text">
+          <strong>OAK<br>QUARRY</strong>
+          <span>Management LLC</span>
+        </div>
+      </div>
+      <div class="nav-divider"></div>
+      <div class="nav-logo-sv">
+        <div class="nav-logo-sv-inner">
+          <!-- Siena Valley wordmark -->
+          <img class="sv-wordmark" src="https://www.figma.com/api/mcp/asset/83126778-d873-4c3c-bc83-a28ab12c729f" alt="Siena Valley" width="74" height="14" />
+          <!-- DST I badge -->
+          <img class="sv-dst" src="https://www.figma.com/api/mcp/asset/c1043d9d-16ef-4e5a-bbf3-eaf0c1686577" alt="DST I" width="29" height="8" />
+          <!-- Starburst icon -->
+          <img class="sv-star" src="https://www.figma.com/api/mcp/asset/6ac028b1-afcd-4f86-ae94-e07805106535" alt="" width="26" height="26" />
+        </div>
+      </div>
+    </a>
+    <nav class="nav-links">
+      <a href="#opportunity">Opportunity</a>
+      <a href="#portfolio">Portfolio</a>
+      <a href="#ground-lease">Ground Lease</a>
+      <a href="#economics">Economics</a>
+      <a href="#sponsor">Sponsor</a>
+      <a href="#risks">Risks</a>
+    </nav>
+    <a href="#contact" class="nav-cta">Request PPM</a>
+    <button class="nav-hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- Mobile drawer -->
+<div class="nav-drawer" id="navDrawer">
+  <a href="#opportunity" class="drawer-link">Opportunity</a>
+  <a href="#portfolio" class="drawer-link">Portfolio</a>
+  <a href="#ground-lease" class="drawer-link">Ground Lease</a>
+  <a href="#economics" class="drawer-link">Economics</a>
+  <a href="#sponsor" class="drawer-link">Sponsor</a>
+  <a href="#risks" class="drawer-link">Risks</a>
+  <a href="#contact" class="drawer-link nav-drawer-cta">Request PPM</a>
+</div>
+
+<!-- ─── HERO ──────────────────────────────────────────── -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-confidential">Confidential — Accredited Investors Only</div>
+  <div class="hero-content">
+    <p class="hero-eyebrow">Golf Course, Land, Commercial | Gypsum, Colorado</p>
+    <h1 class="hero-title">Siena Valley DST I</h1>
+    <p class="hero-subtitle">BD / RIA Fact Sheet — Preliminary Summary for Discussion Purposes Only</p>
+    <a href="#contact" class="hero-btn">Request Offering Materials</a>
+  </div>
+  <div class="hero-stat-bar">
+    <div class="hero-stat-inner">
+      <div class="hero-stat-item">
+        <div class="hero-stat-label">Offering Size</div>
+        <div class="hero-stat-value">$35M</div>
+      </div>
+      <div class="hero-stat-item">
+        <div class="hero-stat-label">Projected Net IRR</div>
+        <div class="hero-stat-value">11.53%</div>
+      </div>
+      <div class="hero-stat-item">
+        <div class="hero-stat-label">Pref Return</div>
+        <div class="hero-stat-value gold">5.0%</div>
+      </div>
+      <div class="hero-stat-item">
+        <div class="hero-stat-label">Hold Period</div>
+        <div class="hero-stat-value">2025 – 2029</div>
+      </div>
+      <div class="hero-stat-item">
+        <div class="hero-stat-label">Exit Value</div>
+        <div class="hero-stat-value">$48.57M+</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── SECTION 2: OPPORTUNITY ─────────────────────────── -->
+<section id="opportunity">
+  <div class="section-inner">
+    <div class="opp-grid">
+      <div class="opp-left">
+        <p class="section-eyebrow">The Opportunity</p>
+        <h2 class="section-h2" style="font-size:clamp(30px,3.75vw,48px);letter-spacing:-1.2px;margin-bottom:40px;">Strategic Land Within a Controlled Mountain Club Ecosystem</h2>
+        <div class="opp-body">
+          <p>Siena Valley DST I is a Delaware Statutory Trust being formed to acquire a strategic portfolio of land assets within and adjacent to Siena Valley Club in the Vail Valley, Colorado market.</p>
+          <p>The trust is expected to acquire land that is central to the broader community's golf, events, future development, access, and water-rights strategy. At closing, the DST is expected to enter into a ground lease with Siena Valley Holdings, creating a contractual income stream during the hold period while preserving long-term value creation through appreciation and eventual disposition.</p>
+          <p>The Sponsor is currently establishing two substantially similar DST offerings in order to accommodate an initial closing followed by a subsequent closing at a later date. This structure is intended to provide flexibility in capital formation and transaction timing while preserving substantially similar investment exposure across the two offerings.</p>
+        </div>
+      </div>
+      <div>
+        <div class="opp-sidebar">
+          <div class="opp-sidebar-head">Investment Snapshot</div>
+          <div class="opp-sidebar-body">
+            <div class="opp-row"><span class="opp-row-label">Offering Name</span><span class="opp-row-value">Siena Valley DST I</span></div>
+            <div class="opp-row"><span class="opp-row-label">Structure</span><span class="opp-row-value">Delaware Statutory Trust</span></div>
+            <div class="opp-row"><span class="opp-row-label">Location</span><span class="opp-row-value">Gypsum, Colorado</span></div>
+            <div class="opp-row"><span class="opp-row-label">Raise Amount</span><span class="opp-row-value">$35,000,000</span></div>
+            <div class="opp-row" style="align-items:flex-start;">
+              <span class="opp-row-label">Property Type</span>
+              <span class="opp-row-value" style="max-width:60%;line-height:1.5;">Strategic land / golf-course land / amenity-related land / future development land / residential lot assemblage</span>
+            </div>
+            <div class="opp-row"><span class="opp-row-label">Hold Period</span><span class="opp-row-value">May 2025 – May 2029</span></div>
+            <div class="opp-row"><span class="opp-row-label">Projected Net IRR</span><span class="opp-row-value green">11.53%</span></div>
+            <div class="opp-row"><span class="opp-row-label">Pref Return Hurdle</span><span class="opp-row-value">5.0% annual</span></div>
+            <div class="opp-row" style="border-bottom:none;"><span class="opp-row-label">1031 Intent</span><span class="opp-row-value">Intended for 1031 exchange</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── SECTION 3: PORTFOLIO ────────────────────────────── -->
+<section id="portfolio">
+  <div class="section-inner">
+    <div class="portfolio-header">
+      <div class="portfolio-header-left">
+        <p class="section-eyebrow">Portfolio Composition</p>
+        <h2 class="section-h2 md" style="margin-bottom:8px;">A Strategic Asset Basket</h2>
+        <p class="portfolio-subtitle">The DST is expected to acquire the following land assets within the Siena Valley Club ecosystem.</p>
+      </div>
+    </div>
+    <div class="asset-grid">
+      <div class="asset-card">
+        <div class="asset-number">Asset 01</div>
+        <div class="asset-name">Golf Course / Events Cabin Parcel</div>
+        <div class="asset-desc"></div>
+        <div class="asset-meta">
+          <div class="asset-meta-row">
+            <span class="asset-meta-label">Parcel</span>
+            <span class="asset-meta-value">2111-301-01-004</span>
+          </div>
+          <div class="asset-meta-row" style="margin-top:16px;border-top:1px solid var(--border);padding-top:17px;">
+            <span class="asset-meta-label">Size</span>
+            <span class="asset-meta-value">123 acres</span>
+          </div>
+        </div>
+      </div>
+      <div class="asset-card">
+        <div class="asset-number">Asset 02</div>
+        <div class="asset-name">Winding Creek Ranch</div>
+        <div class="asset-desc">Currently ranch land and expected to be a strategic component of Phase 3 development.</div>
+        <div class="asset-meta">
+          <div class="asset-meta-row">
+            <span class="asset-meta-label">Parcel</span>
+            <span class="asset-meta-value">2111-311-00-45</span>
+          </div>
+          <div class="asset-meta-row" style="margin-top:16px;border-top:1px solid var(--border);padding-top:17px;">
+            <span class="asset-meta-label">Size</span>
+            <span class="asset-meta-value">277 acres</span>
+          </div>
+        </div>
+      </div>
+      <div class="asset-card">
+        <div class="asset-number">Asset 03</div>
+        <div class="asset-name">Gleaming Sky Ranch</div>
+        <div class="asset-desc">Central to Phase 3 with forest access and significant water rights.</div>
+        <div class="asset-meta">
+          <div class="asset-meta-row">
+            <span class="asset-meta-label">Parcel</span>
+            <span class="asset-meta-value">2111-314-00-001</span>
+          </div>
+          <div class="asset-meta-row" style="margin-top:16px;border-top:1px solid var(--border);padding-top:17px;">
+            <span class="asset-meta-label">Size</span>
+            <span class="asset-meta-value">198 acres</span>
+          </div>
+        </div>
+      </div>
+      <div class="asset-card">
+        <div class="asset-number">Asset 04</div>
+        <div class="asset-name">Residential Lot Acquisition Pool</div>
+        <div class="asset-desc">Pool of approximately 30 residential lots currently owned by third parties.</div>
+      </div>
+      <div class="asset-card">
+        <div class="asset-number">Asset 05</div>
+        <div class="asset-name">Transaction Reserves</div>
+        <div class="asset-desc">Allocation for closing costs, management fees, and transaction-related reserves.</div>
+      </div>
+    </div>
+    <img
+      class="portfolio-map"
+      src="https://www.figma.com/api/mcp/asset/08cee05e-bcd4-46e4-aef1-fc3e60025bf9"
+      alt="Siena Valley site map"
+    />
+  </div>
+</section>
+
+<!-- ─── SECTION 4: THESIS ─────────────────────────────────── -->
+<section id="thesis">
+  <div class="section-inner">
+    <div class="thesis-header">
+      <p class="section-eyebrow center">Why Siena Valley</p>
+      <h2 class="section-h2 center">Four Pillars of Value Creation</h2>
+    </div>
+    <div class="thesis-grid">
+      <div>
+        <div class="pillar-num">01</div>
+        <h3 class="pillar-title">Strategic Land within a Controlled Community Ecosystem</h3>
+        <p class="pillar-body">The trust is expected to own land that is central to the long-term strategic development of Siena Valley Club. The Sponsor believes the value of these assets is derived from their strategic importance within the community footprint.</p>
+      </div>
+      <div>
+        <div class="pillar-num">02</div>
+        <h3 class="pillar-title">Contracted Ground Lease Income During Hold Period</h3>
+        <p class="pillar-body">The expected ground lease with Siena Valley Holdings is intended to provide a defined cash flow stream during the hold period.</p>
+      </div>
+      <div>
+        <div class="pillar-num">03</div>
+        <h3 class="pillar-title">Land Appreciation and Assemblage Value</h3>
+        <p class="pillar-body">The combination of golf-course land, amenity land, future development land, forest access, and water-rights value supports meaningful appreciation over the hold period.</p>
+      </div>
+      <div>
+        <div class="pillar-num">04</div>
+        <h3 class="pillar-title">Alignment With Sponsor Platform</h3>
+        <p class="pillar-body">The portfolio sits within the broader Siena Valley Club ecosystem, where the Sponsor and its affiliates are involved across planning, development, and strategic positioning.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── SECTION 5: GROUND LEASE ──────────────────────────── -->
+<section id="ground-lease">
+  <div class="section-inner">
+    <div class="lease-grid">
+      <div class="lease-left">
+        <h2 class="lease-title">Ground Lease Structure</h2>
+        <p class="lease-body">At closing, the DST is expected to enter into a ground lease with Siena Valley Holdings. The lease is intended to provide an increasing income stream to the trust over the investment period.</p>
+        <div class="lease-pullquote">
+          The lease profile is intended to support a modest early ramp in income, followed by increasing contractual lease payments over the hold period.
+        </div>
+      </div>
+      <div class="lease-right">
+        <p class="lease-chart-label">Scheduled Quarterly Ground Lease Payments</p>
+        <div class="lease-chart-wrap">
+          <div class="lease-tooltip" id="leaseTooltip"></div>
+          <div class="lease-chart-interactive" id="leaseChart"></div>
+        </div>
+        <div class="lease-expand" id="leaseExpandBtn">
+          <span class="lease-expand-label">View Full 17-Row Lease Data</span>
+          <svg width="12" height="7" viewBox="0 0 12 7" fill="none" xmlns="http://www.w3.org/2000/svg" id="leaseExpandIcon" style="transition:transform 0.3s;">
+            <path d="M1 1L6 6L11 1" stroke="rgba(255,255,255,0.6)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div class="lease-table-wrap" id="leaseTable" style="display:none;">
+          <table class="lease-data-table">
+            <thead><tr><th>Payment Date</th><th>Ground Lease Payment</th></tr></thead>
+            <tbody id="leaseTableBody"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── SECTION 6: ECONOMICS ─────────────────────────────── -->
+<section id="economics">
+  <div class="section-inner">
+    <div class="econ-header">
+      <h2 class="section-h2 md" style="margin-bottom:24px;">Projected Investor Economics</h2>
+      <p class="econ-subhead">Current underwriting assumptions reflect a projected net investor IRR of 11.53%.</p>
+    </div>
+    <div class="metric-grid">
+      <div class="metric-card">
+        <div class="metric-label">Projected Net IRR</div>
+        <div class="metric-value">11.53%</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-label">Initial Equity Outlay</div>
+        <div class="metric-value">$35M</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-label">Projected Exit Value</div>
+        <div class="metric-value">$48.5M+</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-label">Target Hold Period</div>
+        <div class="metric-value">2025 – 2029</div>
+      </div>
+    </div>
+    <div class="cashflow-box">
+      <p class="cashflow-label">Projected Investor Cash Flows</p>
+      <div class="cf-chart-wrap">
+        <div class="cf-tooltip" id="cfTooltip"></div>
+        <div class="cashflow-chart" id="cfChart"></div>
+      </div>
+      <p class="cashflow-note">Full 19-row cash flow model available in due diligence materials. No assurance can be given that projected returns will be achieved.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ─── SECTION 7: COMPENSATION & WATERFALL ──────────────── -->
+<section id="compensation">
+  <div class="section-inner">
+    <div class="comp-grid">
+      <div>
+        <p class="comp-eyebrow">Alignment</p>
+        <h2 class="comp-h2">Sponsor Compensation</h2>
+        <div class="comp-table">
+          <div class="comp-row">
+            <span class="comp-row-label">Closing Fee</span>
+            <span class="comp-row-value">5.0% of acquisition price</span>
+          </div>
+          <div class="comp-row">
+            <span class="comp-row-label">Disposition Fee</span>
+            <span class="comp-row-value">1.0% of sale value</span>
+          </div>
+          <div class="comp-row">
+            <span class="comp-row-label">Management Fee</span>
+            <span class="comp-row-value">2.0% of capital raised</span>
+          </div>
+          <div class="comp-row">
+            <span class="comp-row-label">Carried Interest</span>
+            <span class="comp-row-value">20.0% of earnings</span>
+          </div>
+        </div>
+      </div>
+      <div>
+        <h2 class="waterfall-h2">Distribution Waterfall</h2>
+        <div class="waterfall-steps">
+          <div class="waterfall-step">
+            <div class="step-num">1</div>
+            <div>
+              <p class="step-title">Preferred Return</p>
+              <p class="step-body">Investors receive an aggregate <strong>5.0% annual preferred return</strong>.</p>
+            </div>
+          </div>
+          <div class="waterfall-step">
+            <div class="step-num">2</div>
+            <div>
+              <p class="step-title">Catch-Up</p>
+              <p class="step-body">The management company receives a <strong>catch-up allocation</strong> after the preferred hurdle.</p>
+            </div>
+          </div>
+          <div class="waterfall-step">
+            <div class="step-num filled">3</div>
+            <div>
+              <p class="step-title">Final Split</p>
+              <p class="step-body">Remaining proceeds are split <strong>80% to investors / 20% to management</strong>.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── SECTION 8: SPONSOR ───────────────────────────────── -->
+<section id="sponsor">
+  <div class="section-inner">
+    <div class="sponsor-header">
+      <p class="section-eyebrow center">About the Sponsor</p>
+      <h2 class="section-h2 center green">Oak Quarry Capital Management, LLC</h2>
+      <p class="sponsor-subhead">A real estate investment and development platform focused on destination-oriented real estate opportunities.</p>
+    </div>
+    <div class="capability-grid">
+      <div class="capability-cell">
+        <div class="capability-icon">
+          <img src="https://www.figma.com/api/mcp/asset/f936688f-6dff-4fd2-8dc5-3ca1b232602a" alt="Land Acquisition" />
+        </div>
+        <span class="capability-label">Land Acquisition</span>
+      </div>
+      <div class="capability-cell">
+        <div class="capability-icon">
+          <img src="https://www.figma.com/api/mcp/asset/d2677259-328d-4f43-abba-38709713997c" alt="Design & Dev" />
+        </div>
+        <span class="capability-label">Design &amp; Dev</span>
+      </div>
+      <div class="capability-cell">
+        <div class="capability-icon">
+          <img src="https://www.figma.com/api/mcp/asset/8a8b1ce3-7e63-4fc2-9383-46a98bfc8de1" alt="Construction" />
+        </div>
+        <span class="capability-label">Construction</span>
+      </div>
+      <div class="capability-cell">
+        <div class="capability-icon">
+          <img src="https://www.figma.com/api/mcp/asset/862d651d-d949-4c5a-a807-e984467d60d1" alt="Marketing & Sales" />
+        </div>
+        <span class="capability-label">Marketing &amp; Sales</span>
+      </div>
+      <div class="capability-cell">
+        <div class="capability-icon">
+          <img src="https://www.figma.com/api/mcp/asset/c0ccccbc-df11-4857-b679-9046766d6be1" alt="Asset Management" />
+        </div>
+        <span class="capability-label">Asset Management</span>
+      </div>
+    </div>
+    <div class="sponsor-body">
+      <p>Through affiliated entities and controlled operating relationships, the Sponsor participates across land acquisition, design and development, construction execution, marketing and sales, and long-term strategic asset management.</p>
+      <p>The Sponsor believes that this integrated approach supports stronger underwriting, tighter alignment, and better long-term decision-making across the Siena Valley Club platform.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ─── SECTION 9: SUITABILITY ───────────────────────────── -->
+<section id="suitability">
+  <div class="section-inner">
+    <div class="suitability-header">
+      <h2 class="section-h2 sm center" style="margin-bottom:16px;">Suitability Considerations</h2>
+      <p class="suitability-sub">Investor Profile Alignment</p>
+    </div>
+    <div class="suitability-panels">
+      <div class="suit-panel">
+        <div class="suit-panel-header">
+          <img src="https://www.figma.com/api/mcp/asset/0163e310-27ff-4c43-baa9-0ff4fa1be368" alt="Check" />
+          <h3 class="suit-panel-title">May Be Appropriate For</h3>
+        </div>
+        <ul class="suit-list">
+          <li><span class="suit-dot gold"></span>Accredited investors seeking passive exposure to land.</li>
+          <li><span class="suit-dot gold"></span>Evaluating replacement property for a 1031 exchange.</li>
+          <li><span class="suit-dot gold"></span>Investors who can tolerate illiquidity during the hold period.</li>
+          <li><span class="suit-dot gold"></span>Comfortable with appreciation as a material return component.</li>
+        </ul>
+      </div>
+      <div class="suit-panel">
+        <div class="suit-panel-header">
+          <img src="https://www.figma.com/api/mcp/asset/cc7cd739-8e7d-4b4e-a146-c553eb31d48f" alt="X" />
+          <h3 class="suit-panel-title">May Be Less Appropriate For</h3>
+        </div>
+        <ul class="suit-list">
+          <li><span class="suit-dot grey"></span>Requiring current high-yield cash flow from inception.</li>
+          <li><span class="suit-dot grey"></span>Requiring liquidity during the investment period.</li>
+          <li><span class="suit-dot grey"></span>Not comfortable with strategic land exposure or appreciation risk.</li>
+        </ul>
+      </div>
+    </div>
+    <p class="suitability-note">Final suitability standards will be set forth in the offering materials.</p>
+  </div>
+</section>
+
+<!-- ─── SECTION 10: RISKS ─────────────────────────────────── -->
+<section id="risks">
+  <div class="section-inner">
+    <div class="risks-head">
+      <h2 class="section-h2 sm" style="margin-bottom:0;">Key Risks</h2>
+    </div>
+    <p class="risks-intro">Investment in Siena Valley DST I involves substantial risk. Key risks include, but are not limited to:</p>
+    <div class="accordion">
+      <div class="accordion-item">
+        <div class="accordion-header" onclick="toggleAccordion(this)">
+          <span class="accordion-title">1. Land Valuation and Disposition Risk</span>
+          <svg class="accordion-icon" viewBox="0 0 12 7" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1L6 6L11 1" stroke="#b5913a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="accordion-body">
+          The value of land assets is highly dependent on market conditions, buyer appetite, and development potential, which may not be realized. There is no guarantee that the assets can be sold at or above the projected exit value, and the timing of any disposition is uncertain.
+        </div>
+      </div>
+      <div class="accordion-item">
+        <div class="accordion-header" onclick="toggleAccordion(this)">
+          <span class="accordion-title">2. Future Development and Entitlement Risk</span>
+          <svg class="accordion-icon" viewBox="0 0 12 7" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1L6 6L11 1" stroke="#b5913a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="accordion-body">
+          Certain assets in the portfolio may require entitlements, rezoning, or regulatory approvals for their highest and best use. No assurance can be given that such approvals will be obtained, and the failure to obtain them could materially affect projected values.
+        </div>
+      </div>
+      <div class="accordion-item">
+        <div class="accordion-header" onclick="toggleAccordion(this)">
+          <span class="accordion-title">3. Dependence on Siena Valley Holdings</span>
+          <svg class="accordion-icon" viewBox="0 0 12 7" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1L6 6L11 1" stroke="#b5913a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="accordion-body">
+          The projected lease income and much of the strategic value of the portfolio depends on Siena Valley Holdings performing under the ground lease and continuing to operate and develop the broader community. Any operational or financial difficulty experienced by Siena Valley Holdings could adversely impact the DST.
+        </div>
+      </div>
+      <div class="accordion-item">
+        <div class="accordion-header" onclick="toggleAccordion(this)">
+          <span class="accordion-title">4. Market and Economic Conditions</span>
+          <svg class="accordion-icon" viewBox="0 0 12 7" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1L6 6L11 1" stroke="#b5913a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="accordion-body">
+          The performance of this investment is subject to market and economic conditions in the Vail Valley and the broader luxury real estate market. Adverse changes in local or national real estate markets, interest rates, or economic conditions generally could negatively impact land values, lease income, and the timing and proceeds of any disposition.
+        </div>
+      </div>
+      <div class="accordion-item">
+        <div class="accordion-header" onclick="toggleAccordion(this)">
+          <span class="accordion-title">5. Illiquidity</span>
+          <svg class="accordion-icon" viewBox="0 0 12 7" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1L6 6L11 1" stroke="#b5913a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="accordion-body">
+          Interests in a Delaware Statutory Trust are illiquid investments. There is no established secondary market for DST interests, and investors should expect to hold their investment through the full target hold period. There can be no assurance that an early exit or liquidity event will be available.
+        </div>
+      </div>
+      <div class="accordion-item">
+        <div class="accordion-header" onclick="toggleAccordion(this)">
+          <span class="accordion-title">6. Affiliated-Party and Conflict-of-Interest Considerations</span>
+          <svg class="accordion-icon" viewBox="0 0 12 7" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1L6 6L11 1" stroke="#b5913a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="accordion-body">
+          The Sponsor and its affiliates participate across multiple aspects of the Siena Valley Club ecosystem, including land acquisition, development, construction, and strategic management. This integrated structure creates potential conflicts of interest between the Sponsor's various roles. Investors should carefully review affiliated-party disclosures in the offering documents.
+        </div>
+      </div>
+      <div class="accordion-item">
+        <div class="accordion-header" onclick="toggleAccordion(this)">
+          <span class="accordion-title">7. Tax and 1031 Qualification Risks</span>
+          <svg class="accordion-icon" viewBox="0 0 12 7" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1L6 6L11 1" stroke="#b5913a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="accordion-body">
+          This offering is intended to be structured for use in a §1031 like-kind exchange, but no assurance can be given that it will qualify for any particular investor's exchange. Tax treatment depends on individual circumstances, and investors are strongly encouraged to consult their own tax advisors before participating. Changes in tax law could also affect the offering's structure or anticipated tax benefits.
+        </div>
+      </div>
+      <div class="accordion-item">
+        <div class="accordion-header" onclick="toggleAccordion(this)">
+          <span class="accordion-title">8. Concentration Risk</span>
+          <svg class="accordion-icon" viewBox="0 0 12 7" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1L6 6L11 1" stroke="#b5913a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="accordion-body">
+          The portfolio is concentrated in a single geographic market (Gypsum/Glenwood Springs, Colorado) and within a single development ecosystem (Siena Valley Club). This concentration means the portfolio is not diversified across asset types, markets, or operators, and adverse developments affecting the Siena Valley Club community could have an outsized negative impact on the investment.
+        </div>
+      </div>
+      <div class="accordion-item">
+        <div class="accordion-header" onclick="toggleAccordion(this)">
+          <span class="accordion-title">9. Projected Exit Value Not Achieved</span>
+          <svg class="accordion-icon" viewBox="0 0 12 7" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1L6 6L11 1" stroke="#b5913a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="accordion-body">
+          The projected exit value of $48,575,000 or more is based on current underwriting assumptions and is not guaranteed. Actual sale proceeds may be materially lower due to market conditions, development outcomes, buyer demand, or other factors outside the Sponsor's control. A full discussion of risks will be contained in the Private Placement Memorandum.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── SECTION 12: CTA & CONTACT ────────────────────────── -->
+<section id="contact">
+  <div class="section-inner">
+    <div class="contact-inner">
+      <h2 class="contact-title">Request Offering Materials</h2>
+      <p class="contact-sub">This material must be accompanied by a confidential Private Placement Memorandum.</p>
+      <div class="contact-form">
+        <div class="form-grid">
+          <div class="form-group">
+            <label class="form-label">Full Name</label>
+            <input type="text" class="form-input" placeholder="" />
+          </div>
+          <div class="form-group">
+            <label class="form-label">Firm / Organization</label>
+            <input type="text" class="form-input" placeholder="" />
+          </div>
+          <div class="form-group">
+            <label class="form-label">Role</label>
+            <div class="form-select-wrap">
+              <select class="form-select">
+                <option>Broker-Dealer</option>
+                <option>RIA</option>
+                <option>Family Office</option>
+                <option>Institutional Investor</option>
+                <option>Other</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Email</label>
+            <input type="email" class="form-input" placeholder="" />
+          </div>
+        </div>
+        <div class="form-checkbox-row">
+          <input type="checkbox" class="form-checkbox" id="accredited" />
+          <label class="form-checkbox-label" for="accredited">I confirm I am an accredited investor as defined under Rule 501 of Regulation D.</label>
+        </div>
+        <button class="form-submit" type="submit">Request PPM</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FOOTER ────────────────────────────────────────────── -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-disclaimer">
+      <p>This material is for informational and discussion purposes only and does not constitute an offer to sell or a solicitation of an offer to buy securities. Any such offer will be made only through final offering documents, including a confidential Private Placement Memorandum, subscription materials, and related legal documentation.</p>
+    </div>
+    <div class="footer-bottom">
+      <div>
+        <div class="footer-brand-name">OAK QUARRY</div>
+        <div class="footer-copy">
+          © 2025 Oak Quarry Capital Management, LLC.<br>
+          All rights reserved.
+        </div>
+      </div>
+      <nav class="footer-nav">
+        <div class="footer-nav-col">
+          <a href="#opportunity">Opportunity</a>
+          <a href="#portfolio">Portfolio</a>
+          <a href="#ground-lease">Ground Lease</a>
+        </div>
+        <div class="footer-nav-col">
+          <a href="#economics">Economics</a>
+          <a href="#sponsor">Sponsor</a>
+          <a href="#risks">Risks</a>
+        </div>
+        <div class="footer-nav-col">
+          <span>Investors</span>
+          <a href="#contact">Request PPM</a>
+          <a href="#contact">Due Diligence</a>
+        </div>
+      </nav>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // ─── Ground Lease Chart ───────────────────────────────────
+  const leaseData = [
+    { date: "Jun 1, 2025",  value: 0 },
+    { date: "Jul 1, 2025",  value: 0 },
+    { date: "Oct 1, 2025",  value: 0 },
+    { date: "Jan 1, 2026",  value: 375000 },
+    { date: "Apr 1, 2026",  value: 375000 },
+    { date: "Jul 1, 2026",  value: 562500 },
+    { date: "Oct 1, 2026",  value: 562500 },
+    { date: "Jan 1, 2027",  value: 562500 },
+    { date: "Apr 1, 2027",  value: 562500 },
+    { date: "Jul 1, 2027",  value: 618750 },
+    { date: "Oct 1, 2027",  value: 618750 },
+    { date: "Jan 1, 2028",  value: 618750 },
+    { date: "Apr 1, 2028",  value: 618750 },
+    { date: "Jul 1, 2028",  value: 680625 },
+    { date: "Oct 1, 2028",  value: 680625 },
+    { date: "Jan 1, 2029",  value: 680625 },
+    { date: "Apr 1, 2029",  value: 680625 },
+  ];
+  const maxLease = Math.max(...leaseData.map(d => d.value));
+  const MIN_BAR_H = 4; // px for $0 bars
+
+  function formatDollars(v) {
+    if (v === 0) return "$0";
+    return "$" + v.toLocaleString('en-US');
+  }
+
+  const leaseChart = document.getElementById('leaseChart');
+  const leaseTooltip = document.getElementById('leaseTooltip');
+  const chartHeight = 255; // matches CSS height minus bottom border
+
+  leaseData.forEach((item, i) => {
+    const bar = document.createElement('div');
+    bar.className = 'lease-bar' + (item.value === 0 ? ' zero' : '');
+    const pct = item.value === 0 ? 0 : (item.value / maxLease);
+    const px = item.value === 0 ? MIN_BAR_H : Math.max(MIN_BAR_H, Math.round(pct * chartHeight));
+    bar.style.height = px + 'px';
+    bar.dataset.value = item.value;
+    bar.dataset.date = item.date;
+
+    if (item.value > 0) {
+      const showTip = (e) => {
+        // position tooltip relative to chart wrap
+        const wrap = leaseChart.parentElement;
+        const wrapRect = wrap.getBoundingClientRect();
+        const barRect = bar.getBoundingClientRect();
+        const left = barRect.left - wrapRect.left + barRect.width / 2;
+        const top  = barRect.top  - wrapRect.top  - 4;
+
+        leaseTooltip.innerHTML =
+          `<div class="lease-tooltip-date">${item.date}</div>` +
+          `<div class="lease-tooltip-val">${formatDollars(item.value)}</div>`;
+        leaseTooltip.style.left = left + 'px';
+        leaseTooltip.style.top  = top + 'px';
+        leaseTooltip.style.transform = 'translate(-50%, -100%)';
+        leaseTooltip.classList.add('visible');
+        // highlight
+        document.querySelectorAll('.lease-bar').forEach(b => b.classList.remove('active'));
+        bar.classList.add('active');
+      };
+      const hideTip = () => {
+        leaseTooltip.classList.remove('visible');
+        bar.classList.remove('active');
+      };
+      bar.addEventListener('mouseenter', showTip);
+      bar.addEventListener('mouseleave', hideTip);
+      bar.addEventListener('click', (e) => {
+        if (leaseTooltip.classList.contains('visible')) { hideTip(); } else { showTip(e); }
+      });
+    }
+    leaseChart.appendChild(bar);
+  });
+
+  // Expand table
+  const leaseExpandBtn = document.getElementById('leaseExpandBtn');
+  const leaseTableEl   = document.getElementById('leaseTable');
+  const leaseExpandIcon = document.getElementById('leaseExpandIcon');
+  const leaseTableBody = document.getElementById('leaseTableBody');
+
+  // Populate table
+  leaseData.forEach(item => {
+    const tr = document.createElement('tr');
+    if (item.value === 0) tr.className = 'zero-row';
+    tr.innerHTML = `<td>${item.date}</td><td>${formatDollars(item.value)}</td>`;
+    leaseTableBody.appendChild(tr);
+  });
+
+  leaseExpandBtn.addEventListener('click', () => {
+    const open = leaseTableEl.style.display !== 'none';
+    leaseTableEl.style.display = open ? 'none' : 'block';
+    leaseExpandIcon.style.transform = open ? 'rotate(0deg)' : 'rotate(180deg)';
+  });
+
+  // ─── Cash Flow Chart ──────────────────────────────────────
+  const cfData = [
+    { date: "May 1, 2025",  value: -35000000, type: "initial" },
+    { date: "Jun 1, 2025",  value: 0,         type: "zero" },
+    { date: "Jul 1, 2025",  value: 0,         type: "zero" },
+    { date: "Oct 1, 2025",  value: 0,         type: "zero" },
+    { date: "Jan 1, 2026",  value: 250000,    type: "income" },
+    { date: "Apr 1, 2026",  value: 250000,    type: "income" },
+    { date: "Jul 1, 2026",  value: 250000,    type: "income" },
+    { date: "Oct 1, 2026",  value: 250000,    type: "income" },
+    { date: "Jan 1, 2027",  value: 375000,    type: "income" },
+    { date: "Apr 1, 2027",  value: 375000,    type: "income" },
+    { date: "Jul 1, 2027",  value: 375000,    type: "income" },
+    { date: "Oct 1, 2027",  value: 375000,    type: "income" },
+    { date: "Jan 1, 2028",  value: 437500,    type: "income" },
+    { date: "Apr 1, 2028",  value: 437500,    type: "income" },
+    { date: "Jul 1, 2028",  value: 437500,    type: "income" },
+    { date: "Oct 1, 2028",  value: 437500,    type: "income" },
+    { date: "Jan 1, 2029",  value: 1000000,   type: "income" },
+    { date: "Apr 1, 2029",  value: 1000000,   type: "income" },
+    { date: "May 1, 2029",  value: 46936663,  type: "exit" },
+  ];
+
+  // Color by value tier
+  function cfColor(item) {
+    if (item.type === "initial") return "#e5e5e5";
+    if (item.type === "zero")    return "#e5e5e5";
+    if (item.type === "exit")    return "#1b4332";
+    const v = item.value;
+    if (v <= 250000) return "rgba(181,145,58,0.4)";
+    if (v <= 375000) return "rgba(181,145,58,0.6)";
+    if (v <= 437500) return "rgba(181,145,58,0.8)";
+    return "#b5913a";
+  }
+
+  // Two-scale: income bars scale vs $1M max → max 35% of chart height
+  // exit bar = 100%
+  const CF_CHART_H = 240; // px (matching CSS height minus padding)
+  const CF_INCOME_MAX = 1000000;
+  const CF_INCOME_H_FRACTION = 0.35;
+
+  function cfBarHeight(item) {
+    if (item.type === "initial" || item.type === "zero") return 4;
+    if (item.type === "exit") return CF_CHART_H;
+    return Math.round((item.value / CF_INCOME_MAX) * CF_INCOME_H_FRACTION * CF_CHART_H);
+  }
+
+  function formatCF(item) {
+    if (item.value === 0) return "$0";
+    if (item.value < 0)   return "(" + "$" + Math.abs(item.value).toLocaleString('en-US') + ")";
+    return "$" + item.value.toLocaleString('en-US');
+  }
+
+  const cfChart  = document.getElementById('cfChart');
+  const cfTooltip = document.getElementById('cfTooltip');
+
+  cfData.forEach((item) => {
+    const bar = document.createElement('div');
+    bar.className = 'cf-bar' + (item.type === 'zero' ? ' zero' : '') + (item.type === 'initial' ? ' initial zero' : '');
+    bar.style.height = cfBarHeight(item) + 'px';
+    bar.style.background = cfColor(item);
+    bar.style.flexShrink = '0';
+
+    const isInteractive = item.type !== 'zero' && item.type !== 'initial';
+
+    if (isInteractive || item.type === 'initial') {
+      const showTip = () => {
+        const wrap = cfChart.parentElement;
+        const wrapRect = wrap.getBoundingClientRect();
+        const barRect  = bar.getBoundingClientRect();
+        const left = barRect.left - wrapRect.left + barRect.width / 2;
+        const top  = barRect.top  - wrapRect.top  - 8;
+
+        const valClass = item.type === 'exit' ? 'exit' : item.value < 0 ? 'negative' : 'positive';
+        cfTooltip.innerHTML =
+          `<div class="cf-tooltip-date">${item.date}</div>` +
+          `<div class="cf-tooltip-val ${valClass}">${formatCF(item)}</div>`;
+        cfTooltip.style.left = left + 'px';
+        cfTooltip.style.top  = top + 'px';
+        cfTooltip.style.transform = 'translate(-50%, -100%)';
+        cfTooltip.classList.add('visible');
+        document.querySelectorAll('.cf-bar').forEach(b => b.classList.remove('active'));
+        bar.classList.add('active');
+      };
+      const hideTip = () => {
+        cfTooltip.classList.remove('visible');
+        bar.classList.remove('active');
+      };
+      bar.style.cursor = 'pointer';
+      bar.addEventListener('mouseenter', showTip);
+      bar.addEventListener('mouseleave', hideTip);
+    }
+    cfChart.appendChild(bar);
+  });
+
+  // ─── Nav scroll effect
+  const nav = document.querySelector('.nav');
+  window.addEventListener('scroll', () => {
+    nav.style.borderBottomColor = window.scrollY > 10 ? '#e5e5e5' : 'transparent';
+  });
+
+  // Hamburger
+  const hamburger = document.getElementById('hamburger');
+  const navDrawer = document.getElementById('navDrawer');
+  hamburger.addEventListener('click', () => {
+    navDrawer.classList.toggle('open');
+  });
+
+  // Close drawer on link click
+  document.querySelectorAll('.drawer-link').forEach(link => {
+    link.addEventListener('click', () => navDrawer.classList.remove('open'));
+  });
+
+  // Accordion
+  function toggleAccordion(header) {
+    const body = header.nextElementSibling;
+    const icon = header.querySelector('.accordion-icon');
+    if (!body) return;
+    const isOpen = body.classList.contains('open');
+    // Close all
+    document.querySelectorAll('.accordion-body').forEach(b => b.classList.remove('open'));
+    document.querySelectorAll('.accordion-icon').forEach(i => i.classList.remove('open'));
+    // Open clicked if it was closed
+    if (!isOpen) {
+      body.classList.add('open');
+      if (icon) icon.classList.add('open');
+    }
+  }
+
+  // Form submit
+  document.querySelector('.form-submit').addEventListener('click', (e) => {
+    e.preventDefault();
+    const name = document.querySelector('input[type="text"]').value;
+    const accredited = document.getElementById('accredited').checked;
+    if (!accredited) {
+      alert('Please confirm you are an accredited investor.');
+      return;
+    }
+    alert('Thank you' + (name ? ', ' + name : '') + '. Your request has been received. Our team will be in touch shortly.');
+  });
+</script>
+</body>
+</html>
