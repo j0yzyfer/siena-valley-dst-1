@@ -16,7 +16,7 @@
   <div class="nav-inner">
     <a class="nav-logo" href="#">
       <div class="nav-logo-oq">
-        <img src="https://www.figma.com/api/mcp/asset/fecfc96b-6ff1-497c-bb4d-92d692485a4b" alt="Oak Quarry icon" />
+        <img src="images/fecfc96b-6ff1-497c-bb4d-92d692485a4b.svg" alt="Oak Quarry icon" />
         <div class="nav-logo-oq-text">
           <strong>OAK<br>QUARRY</strong>
           <span>Management LLC</span>
@@ -26,16 +26,18 @@
       <div class="nav-logo-sv">
         <div class="nav-logo-sv-inner">
           <!-- Siena Valley wordmark -->
-          <img class="sv-wordmark" src="https://www.figma.com/api/mcp/asset/83126778-d873-4c3c-bc83-a28ab12c729f" alt="Siena Valley" width="74" height="14" />
+          <img class="sv-wordmark" src="images/83126778-d873-4c3c-bc83-a28ab12c729f.svg" alt="Siena Valley" width="74" height="14" />
           <!-- DST I badge -->
-          <img class="sv-dst" src="https://www.figma.com/api/mcp/asset/c1043d9d-16ef-4e5a-bbf3-eaf0c1686577" alt="DST I" width="29" height="8" />
+          <img class="sv-dst" src="images/c1043d9d-16ef-4e5a-bbf3-eaf0c1686577.svg" alt="DST I" width="29" height="8" />
           <!-- Starburst icon -->
-          <img class="sv-star" src="https://www.figma.com/api/mcp/asset/6ac028b1-afcd-4f86-ae94-e07805106535" alt="" width="26" height="26" />
+          <img class="sv-star" src="images/6ac028b1-afcd-4f86-ae94-e07805106535.svg" alt="" width="26" height="26" />
         </div>
       </div>
     </a>
     <nav class="nav-links">
       <a href="#opportunity">Opportunity</a>
+      <a href="#project">The Project</a>
+      <a href="#course">The Course</a>
       <a href="#portfolio">Portfolio</a>
       <a href="#ground-lease">Ground Lease</a>
       <a href="#economics">Economics</a>
@@ -49,9 +51,24 @@
   </div>
 </nav>
 
+<!-- ─── MAP LIGHTBOX ──────────────────────────────────── -->
+<div class="lightbox" id="mapLightbox" aria-hidden="true">
+  <button class="lightbox-close" id="lightboxClose" aria-label="Close">&times;</button>
+  <div class="lightbox-controls">
+    <button class="lightbox-btn" id="lbZoomIn" aria-label="Zoom in">+</button>
+    <button class="lightbox-btn" id="lbZoomOut" aria-label="Zoom out">&minus;</button>
+    <button class="lightbox-btn" id="lbReset" aria-label="Reset" title="Reset">&#8635;</button>
+  </div>
+  <div class="lightbox-stage" id="lightboxStage">
+    <img id="lightboxImg" src="" alt="Siena Valley Club Master Plan" draggable="false" />
+  </div>
+</div>
+
 <!-- Mobile drawer -->
 <div class="nav-drawer" id="navDrawer">
   <a href="#opportunity" class="drawer-link">Opportunity</a>
+  <a href="#project" class="drawer-link">The Project</a>
+  <a href="#course" class="drawer-link">The Course</a>
   <a href="#portfolio" class="drawer-link">Portfolio</a>
   <a href="#ground-lease" class="drawer-link">Ground Lease</a>
   <a href="#economics" class="drawer-link">Economics</a>
@@ -133,78 +150,188 @@
   </div>
 </section>
 
+<!-- ─── SECTION: THE PROJECT ───────────────────────────── -->
+<section id="project">
+  <div class="section-inner project-inner">
+    <div class="project-grid">
+      <div class="project-text">
+        <p class="section-eyebrow">The Project</p>
+        <h2 class="section-h2" style="font-size:clamp(30px,3.75vw,48px);letter-spacing:-1.2px;line-height:1;margin-bottom:40px;">Siena Valley Club</h2>
+        <div class="project-body">
+          <p>Nestled in the heart of Vail Valley and bordering the White River National Forest, Siena Valley Club is more than a destination—it's a way of life. Our private membership community is built around four defining pillars: Golf, Ski, Adventure, and Curated Events—offering unparalleled access to world-class recreation, private events, and bespoke experiences.</p>
+          <p>Project mission to deliver these experiences by marrying the untamed beauty of the Colorado outdoors with remarkably built spaces where friends and families can set roots, adventure and grow together. This is the projects vision for community.</p>
+          <p>Siena Valley Club mission is to make connecting with the most important people in member's lives simple by providing the environment, equipment, facilities and training necessary to make epic memories together.</p>
+          <p>At SVC, every home is carefully crafted to deliver exceptional mountain living. In partnership with acclaimed architects and designers, we design and build these gems with a single ambition - to take their owner's breath away.</p>
+        </div>
+      </div>
+      <div class="project-map-wrap">
+        <img
+          class="project-map"
+          src="images/82987a27-8a4f-4169-ab03-0ee8260222e6.jpg"
+          alt="Siena Valley Club Master Plan"
+          id="projectMapImg"
+          data-lightbox
+        />
+        <div class="project-map-hint">Click to expand</div>
+      </div>
+    </div>
+  </div>
+  <!-- Photo strip -->
+  <div class="photo-strip">
+    <div class="photo-strip-track">
+      <img src="images/be0fcdd3-a235-4f4e-910b-6a36f34ff445.jpg" alt="Skiing" />
+      <img src="images/f1beb7a9-1c92-470d-8c36-1f3458c42be7.jpg" alt="Cowboy" />
+      <img src="images/34415585-4859-4f97-88f8-019fac1a5a64.jpg" alt="Skiing" />
+      <img src="images/ed45b270-79d7-47e9-88e3-9c95bff87d51.jpg" alt="Fly Fishing" />
+      <img src="images/41855d93-854d-40f6-95bb-4e186941e62a.jpg" alt="Moto" />
+      <img src="images/5e1ec0c3-08b5-47b7-8961-c7e54adcb0d0.jpg" alt="Skiing" />
+      <img src="images/5cd1e53b-7874-4f40-9146-7b8876812dfe.jpg" alt="Cowboy" />
+      <img src="images/df47293e-2803-42da-99a5-635c3e4075af.jpg" alt="Fly Fishing" />
+      <img src="images/e79eb380-799d-47b5-9897-7730957b99b3.jpg" alt="Hot Tub" />
+      <!-- Duplicate for seamless loop -->
+      <img src="images/be0fcdd3-a235-4f4e-910b-6a36f34ff445.jpg" alt="Skiing" aria-hidden="true" />
+      <img src="images/f1beb7a9-1c92-470d-8c36-1f3458c42be7.jpg" alt="Cowboy" aria-hidden="true" />
+      <img src="images/34415585-4859-4f97-88f8-019fac1a5a64.jpg" alt="Skiing" aria-hidden="true" />
+      <img src="images/ed45b270-79d7-47e9-88e3-9c95bff87d51.jpg" alt="Fly Fishing" aria-hidden="true" />
+      <img src="images/41855d93-854d-40f6-95bb-4e186941e62a.jpg" alt="Moto" aria-hidden="true" />
+    </div>
+  </div>
+</section>
+
+<!-- ─── SECTION: THE GOLF COURSE ───────────────────────── -->
+<section id="course">
+  <div class="section-inner course-inner">
+
+    <!-- Centred header -->
+    <div class="course-header">
+      <p class="section-eyebrow center">The Golf Course</p>
+      <h2 class="section-h2 center" style="font-size:clamp(30px,3.75vw,48px);letter-spacing:-1.2px;line-height:1;">Robert Trent Jones, Jr. Golf Course</h2>
+    </div>
+
+    <!-- Intro body -->
+    <p class="course-intro">
+      Siena Valley Club features a premier private 18-hole championship course designed by
+      <a class="course-link" href="#" onclick="return false;">Robert Trent Jones, Jr.</a>
+      Located in the Vail Valley, it features a 7,272-yard layout (par 72) combining rolling Scottish links-style holes on the front nine with high-country mountain views on the back nine.
+    </p>
+
+    <!-- Two-column feature text -->
+    <div class="course-cols">
+      <div class="course-col">
+        <h3 class="course-col-h3">Course Layout</h3>
+        <p class="course-col-body">The front nine offers a links-style layout, while the back nine utilizes the Eastern slope at over 7,000 feet. The course boasts significant water features, with water coming into play on numerous holes.</p>
+      </div>
+      <div class="course-col">
+        <h3 class="course-col-h3">Design &amp; Topography</h3>
+        <p class="course-col-body">Designed to blend with the natural high-country environment, featuring dramatic changes in elevation.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Full-width marquee photo strip -->
+  <div class="photo-strip course-strip">
+    <div class="photo-strip-track" id="courseStripTrack">
+      <img src="images/cd96fe31-5cd7-4c3c-8caa-6fa3a07ba115.png" alt="Course view 1" />
+      <img src="images/4da15667-08c4-40fb-9815-bee1986a616b.png" alt="Course view 2" />
+      <img src="images/848da403-b3b8-4cd9-aee7-70defde31e12.png" alt="Course view 3" />
+      <img src="images/6874eaba-98e5-4ec4-b581-d6782ab9c75f.jpg" alt="Course view 4" />
+      <img src="images/564c21a0-62e5-470b-912d-ba5efc0f5bd1.png" alt="Course view 5" />
+      <img src="images/17303a91-3000-4ddb-b3e1-edd45bfea271.png" alt="Course view 6" />
+      <img src="images/1730e5dc-22dc-4873-8637-521b23b7d826.jpg" alt="Course view 7" />
+      <img src="images/8f3d640e-2abd-418e-a4e8-f1b66d910157.png" alt="Course view 8" />
+      <img src="images/45a0a4fa-17c1-4210-81e9-4710c021da66.png" alt="Course view 9" />
+      <img src="images/2747f812-fa0b-4a92-b2db-fd277cc86687.png" alt="Course view 10" />
+      <!-- Duplicate set for seamless loop -->
+      <img src="images/cd96fe31-5cd7-4c3c-8caa-6fa3a07ba115.png" alt="Course view 1" aria-hidden="true" />
+      <img src="images/4da15667-08c4-40fb-9815-bee1986a616b.png" alt="Course view 2" aria-hidden="true" />
+      <img src="images/848da403-b3b8-4cd9-aee7-70defde31e12.png" alt="Course view 3" aria-hidden="true" />
+      <img src="images/6874eaba-98e5-4ec4-b581-d6782ab9c75f.jpg" alt="Course view 4" aria-hidden="true" />
+      <img src="images/564c21a0-62e5-470b-912d-ba5efc0f5bd1.png" alt="Course view 5" aria-hidden="true" />
+      <img src="images/17303a91-3000-4ddb-b3e1-edd45bfea271.png" alt="Course view 6" aria-hidden="true" />
+      <img src="images/1730e5dc-22dc-4873-8637-521b23b7d826.jpg" alt="Course view 7" aria-hidden="true" />
+      <img src="images/8f3d640e-2abd-418e-a4e8-f1b66d910157.png" alt="Course view 8" aria-hidden="true" />
+      <img src="images/45a0a4fa-17c1-4210-81e9-4710c021da66.png" alt="Course view 9" aria-hidden="true" />
+      <img src="images/2747f812-fa0b-4a92-b2db-fd277cc86687.png" alt="Course view 10" aria-hidden="true" />
+    </div>
+  </div>
+</section>
+
 <!-- ─── SECTION 3: PORTFOLIO ────────────────────────────── -->
 <section id="portfolio">
-  <div class="section-inner">
+  <div class="section-inner portfolio-inner">
     <div class="portfolio-header">
       <div class="portfolio-header-left">
         <p class="section-eyebrow">Portfolio Composition</p>
         <h2 class="section-h2 md" style="margin-bottom:8px;">A Strategic Asset Basket</h2>
-        <p class="portfolio-subtitle">The DST is expected to acquire the following land assets within the Siena Valley Club ecosystem.</p>
+        <p class="portfolio-subtitle"><em>The DST is expected to acquire the following land assets within the Siena Valley Club ecosystem.</em></p>
       </div>
     </div>
-    <div class="asset-grid">
-      <div class="asset-card">
-        <div class="asset-number">Asset 01</div>
-        <div class="asset-name">Golf Course / Events Cabin Parcel</div>
-        <div class="asset-desc"></div>
-        <div class="asset-meta">
-          <div class="asset-meta-row">
-            <span class="asset-meta-label">Parcel</span>
-            <span class="asset-meta-value">2111-301-01-004</span>
+    <!-- Asset grid: #e5e5e5 bg + 1px gaps = hairline dividers -->
+    <div class="asset-grid-new">
+      <div class="asset-card-new">
+        <div class="asset-number-new">Asset 01</div>
+        <div class="asset-name-new">Golf Course / Events Cabin Parcel</div>
+        <div class="asset-desc-new"></div>
+        <div class="asset-meta-new">
+          <div class="asset-meta-row-new">
+            <span class="asset-meta-label-new">Parcel</span>
+            <span class="asset-meta-value-new">2111-301-01-004</span>
           </div>
-          <div class="asset-meta-row" style="margin-top:16px;border-top:1px solid var(--border);padding-top:17px;">
-            <span class="asset-meta-label">Size</span>
-            <span class="asset-meta-value">123 acres</span>
-          </div>
-        </div>
-      </div>
-      <div class="asset-card">
-        <div class="asset-number">Asset 02</div>
-        <div class="asset-name">Winding Creek Ranch</div>
-        <div class="asset-desc">Currently ranch land and expected to be a strategic component of Phase 3 development.</div>
-        <div class="asset-meta">
-          <div class="asset-meta-row">
-            <span class="asset-meta-label">Parcel</span>
-            <span class="asset-meta-value">2111-311-00-45</span>
-          </div>
-          <div class="asset-meta-row" style="margin-top:16px;border-top:1px solid var(--border);padding-top:17px;">
-            <span class="asset-meta-label">Size</span>
-            <span class="asset-meta-value">277 acres</span>
+          <div class="asset-meta-row-new asset-meta-row-bordered">
+            <span class="asset-meta-label-new">Size</span>
+            <span class="asset-meta-value-new">123 acres</span>
           </div>
         </div>
       </div>
-      <div class="asset-card">
-        <div class="asset-number">Asset 03</div>
-        <div class="asset-name">Gleaming Sky Ranch</div>
-        <div class="asset-desc">Central to Phase 3 with forest access and significant water rights.</div>
-        <div class="asset-meta">
-          <div class="asset-meta-row">
-            <span class="asset-meta-label">Parcel</span>
-            <span class="asset-meta-value">2111-314-00-001</span>
+      <div class="asset-card-new">
+        <div class="asset-number-new">Asset 02</div>
+        <div class="asset-name-new">Winding Creek Ranch</div>
+        <div class="asset-desc-new">Currently ranch land and expected to be a strategic component of Phase 3 development.</div>
+        <div class="asset-meta-new">
+          <div class="asset-meta-row-new">
+            <span class="asset-meta-label-new">Parcel</span>
+            <span class="asset-meta-value-new">2111-311-00-45</span>
           </div>
-          <div class="asset-meta-row" style="margin-top:16px;border-top:1px solid var(--border);padding-top:17px;">
-            <span class="asset-meta-label">Size</span>
-            <span class="asset-meta-value">198 acres</span>
+          <div class="asset-meta-row-new asset-meta-row-bordered">
+            <span class="asset-meta-label-new">Size</span>
+            <span class="asset-meta-value-new">277 acres</span>
           </div>
         </div>
       </div>
-      <div class="asset-card">
-        <div class="asset-number">Asset 04</div>
-        <div class="asset-name">Residential Lot Acquisition Pool</div>
-        <div class="asset-desc">Pool of approximately 30 residential lots currently owned by third parties.</div>
+      <div class="asset-card-new">
+        <div class="asset-number-new">Asset 03</div>
+        <div class="asset-name-new">Gleaming Sky Ranch</div>
+        <div class="asset-desc-new">Central to Phase 3 with forest access and significant water rights.</div>
+        <div class="asset-meta-new">
+          <div class="asset-meta-row-new">
+            <span class="asset-meta-label-new">Parcel</span>
+            <span class="asset-meta-value-new">2111-314-00-001</span>
+          </div>
+          <div class="asset-meta-row-new asset-meta-row-bordered">
+            <span class="asset-meta-label-new">Size</span>
+            <span class="asset-meta-value-new">198 acres</span>
+          </div>
+        </div>
       </div>
-      <div class="asset-card">
-        <div class="asset-number">Asset 05</div>
-        <div class="asset-name">Transaction Reserves</div>
-        <div class="asset-desc">Allocation for closing costs, management fees, and transaction-related reserves.</div>
+      <div class="asset-card-new">
+        <div class="asset-number-new">Asset 04</div>
+        <div class="asset-name-new">Residential Lot Acquisition Pool</div>
+        <div class="asset-desc-new">Pool of approximately 30 residential lots currently owned by third parties.</div>
+        <div class="asset-meta-new"></div>
       </div>
     </div>
-    <img
-      class="portfolio-map"
-      src="https://www.figma.com/api/mcp/asset/08cee05e-bcd4-46e4-aef1-fc3e60025bf9"
-      alt="Siena Valley site map"
-    />
+    <!-- Map with lightbox -->
+    <div class="portfolio-map-wrap" id="portfolioMapWrap">
+      <img
+        class="portfolio-map-new"
+        src="images/9466bd3e-1b43-4646-8c22-72dc50f40a6b.jpg"
+        alt="Siena Valley Club Master Plan"
+        id="portfolioMapImg"
+        data-lightbox
+      />
+      <div class="project-map-hint">Click to expand</div>
+    </div>
   </div>
 </section>
 
@@ -377,31 +504,31 @@
     <div class="capability-grid">
       <div class="capability-cell">
         <div class="capability-icon">
-          <img src="https://www.figma.com/api/mcp/asset/f936688f-6dff-4fd2-8dc5-3ca1b232602a" alt="Land Acquisition" />
+          <img src="images/f936688f-6dff-4fd2-8dc5-3ca1b232602a.svg" alt="Land Acquisition" />
         </div>
         <span class="capability-label">Land Acquisition</span>
       </div>
       <div class="capability-cell">
         <div class="capability-icon">
-          <img src="https://www.figma.com/api/mcp/asset/d2677259-328d-4f43-abba-38709713997c" alt="Design & Dev" />
+          <img src="images/d2677259-328d-4f43-abba-38709713997c.svg" alt="Design & Dev" />
         </div>
         <span class="capability-label">Design &amp; Dev</span>
       </div>
       <div class="capability-cell">
         <div class="capability-icon">
-          <img src="https://www.figma.com/api/mcp/asset/8a8b1ce3-7e63-4fc2-9383-46a98bfc8de1" alt="Construction" />
+          <img src="images/8a8b1ce3-7e63-4fc2-9383-46a98bfc8de1.svg" alt="Construction" />
         </div>
         <span class="capability-label">Construction</span>
       </div>
       <div class="capability-cell">
         <div class="capability-icon">
-          <img src="https://www.figma.com/api/mcp/asset/862d651d-d949-4c5a-a807-e984467d60d1" alt="Marketing & Sales" />
+          <img src="images/862d651d-d949-4c5a-a807-e984467d60d1.svg" alt="Marketing & Sales" />
         </div>
         <span class="capability-label">Marketing &amp; Sales</span>
       </div>
       <div class="capability-cell">
         <div class="capability-icon">
-          <img src="https://www.figma.com/api/mcp/asset/c0ccccbc-df11-4857-b679-9046766d6be1" alt="Asset Management" />
+          <img src="images/c0ccccbc-df11-4857-b679-9046766d6be1.svg" alt="Asset Management" />
         </div>
         <span class="capability-label">Asset Management</span>
       </div>
@@ -423,7 +550,7 @@
     <div class="suitability-panels">
       <div class="suit-panel">
         <div class="suit-panel-header">
-          <img src="https://www.figma.com/api/mcp/asset/0163e310-27ff-4c43-baa9-0ff4fa1be368" alt="Check" />
+          <img src="images/0163e310-27ff-4c43-baa9-0ff4fa1be368.svg" alt="Check" />
           <h3 class="suit-panel-title">May Be Appropriate For</h3>
         </div>
         <ul class="suit-list">
@@ -435,7 +562,7 @@
       </div>
       <div class="suit-panel">
         <div class="suit-panel-header">
-          <img src="https://www.figma.com/api/mcp/asset/cc7cd739-8e7d-4b4e-a146-c553eb31d48f" alt="X" />
+          <img src="images/cc7cd739-8e7d-4b4e-a146-c553eb31d48f.svg" alt="X" />
           <h3 class="suit-panel-title">May Be Less Appropriate For</h3>
         </div>
         <ul class="suit-list">

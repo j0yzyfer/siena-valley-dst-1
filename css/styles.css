@@ -141,7 +141,7 @@
     .hero-bg {
       position: absolute;
       inset: 0;
-      background-image: url('https://www.figma.com/api/mcp/asset/04c5c500-f2c2-4aa8-800c-3a0876d373b5');
+      background-image: url('../images/04c5c500-f2c2-4aa8-800c-3a0876d373b5.png');
       background-size: cover;
       background-position: center;
     }
@@ -336,6 +336,8 @@
 
     /* ─── SECTION 3: PORTFOLIO ────────────────────────── */
     #portfolio { background: var(--bg-light); }
+    .portfolio-inner { background: var(--bg-light); }
+    #portfolio { background: var(--bg-light); }
     .portfolio-header {
       display: flex;
       align-items: flex-end;
@@ -347,81 +349,100 @@
       font-weight: 300;
       font-style: italic;
       font-size: 14px;
+      line-height: 1.43;
       color: var(--body);
       margin-top: 8px;
     }
-    .asset-grid {
+    /* ── New asset grid: gap-px on #e5e5e5 bg = hairline dividers ── */
+    .asset-grid-new {
       display: flex;
       flex-wrap: wrap;
       gap: 1px;
       background: var(--border);
       border: 1px solid var(--border);
-      margin-bottom: 1px;
+      margin-bottom: 80px;
     }
-    .asset-card {
+    .asset-card-new {
       background: var(--white);
-      flex: 1 0 180px;
-      min-height: 380px;
+      flex: 1 0 220px;
+      height: 380px;
       padding: 32px;
       display: flex;
       flex-direction: column;
     }
-    .asset-number {
+    .asset-number-new {
       font-weight: 700;
       font-size: 10px;
       letter-spacing: 1px;
       text-transform: uppercase;
       color: var(--gold);
       margin-bottom: 24px;
+      flex-shrink: 0;
     }
-    .asset-name {
+    .asset-name-new {
       font-weight: 700;
       font-size: 20px;
       line-height: 1.4;
       color: var(--black);
       margin-bottom: 16px;
+      flex-shrink: 0;
     }
-    .asset-desc {
+    .asset-desc-new {
       font-weight: 300;
       font-size: 14px;
       line-height: 1.625;
       color: var(--body);
       flex: 1;
     }
-    .asset-meta {
-      margin-top: 32px;
-      border-top: 1px solid var(--border);
-      padding-top: 16px;
+    .asset-meta-new {
+      margin-top: auto;
+      flex-shrink: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
     }
-    .asset-meta-row {
+    .asset-meta-row-new {
       display: flex;
       justify-content: space-between;
-      margin-bottom: 8px;
+      align-items: center;
+      height: 17px;
     }
-    .asset-meta-row:last-child { margin-bottom: 0; }
-    .asset-meta-label {
+    .asset-meta-row-bordered {
+      border-top: 1px solid var(--border);
+      margin-top: 16px;
+      padding-top: 17px;
+      height: auto;
+    }
+    .asset-meta-label-new {
       font-weight: 400;
       font-size: 11px;
       letter-spacing: 0.55px;
       text-transform: uppercase;
       color: var(--body);
     }
-    .asset-meta-value {
+    .asset-meta-value-new {
       font-weight: 700;
       font-size: 11px;
       letter-spacing: 0.55px;
       text-transform: uppercase;
       color: var(--black);
     }
-    .portfolio-map {
+    /* Portfolio map – full-width portrait, clickable */
+    .portfolio-map-wrap {
+      position: relative;
+      cursor: pointer;
       width: 100%;
-      max-height: 640px;
-      object-fit: cover;
-      object-position: center;
-      display: block;
-      filter: saturate(0);
-      margin-top: 80px;
+      aspect-ratio: 3274 / 4096;
     }
+    .portfolio-map-wrap:hover .project-map-hint { opacity: 1; }
+    .portfolio-map-new {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: opacity 0.2s;
+    }
+    .portfolio-map-wrap:hover .portfolio-map-new { opacity: 0.9; }
 
     /* ─── SECTION 4: THESIS ───────────────────────────── */
     #thesis {}
@@ -1207,6 +1228,230 @@
       margin-top: 8px;
     }
 
+    /* ─── MAP LIGHTBOX ────────────────────────────────── */
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 999;
+      background: rgba(0,0,0,0.92);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s ease;
+    }
+    .lightbox.open {
+      opacity: 1;
+      pointer-events: all;
+    }
+    .lightbox-stage {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: grab;
+    }
+    .lightbox-stage.dragging { cursor: grabbing; }
+    .lightbox-stage img {
+      max-width: none;
+      max-height: none;
+      user-select: none;
+      transform-origin: center center;
+      display: block;
+    }
+    .lightbox-close {
+      position: fixed;
+      top: 24px;
+      right: 32px;
+      z-index: 1001;
+      background: none;
+      border: 1px solid rgba(255,255,255,0.3);
+      color: var(--white);
+      font-size: 28px;
+      line-height: 1;
+      width: 48px;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: background 0.2s, border-color 0.2s;
+    }
+    .lightbox-close:hover {
+      background: rgba(255,255,255,0.12);
+      border-color: rgba(255,255,255,0.6);
+    }
+    .lightbox-controls {
+      position: fixed;
+      bottom: 32px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 1001;
+      display: flex;
+      gap: 8px;
+    }
+    .lightbox-btn {
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.3);
+      color: var(--white);
+      font-size: 20px;
+      width: 48px;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: background 0.2s;
+      line-height: 1;
+    }
+    .lightbox-btn:hover { background: rgba(255,255,255,0.22); }
+    /* Hint on the map image */
+    .project-map-wrap {
+      position: relative;
+      cursor: pointer;
+    }
+    .project-map-hint {
+      position: absolute;
+      bottom: 16px;
+      right: 16px;
+      background: rgba(0,0,0,0.55);
+      color: #fff;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 6px 12px;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.2s;
+    }
+    .project-map-wrap:hover .project-map-hint { opacity: 1; }
+    .project-map-wrap:hover .project-map { opacity: 0.9; }
+    .project-map { transition: opacity 0.2s; }
+
+    /* ─── THE GOLF COURSE ─────────────────────────────── */
+    #course { background: var(--white); }
+    .course-inner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 64px;
+      padding-bottom: 64px !important;
+    }
+    .course-header {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      width: 100%;
+      text-align: center;
+    }
+    .course-header .section-eyebrow { margin-bottom: 0; }
+    .course-intro {
+      font-weight: 300;
+      font-size: 18px;
+      line-height: 1.555;
+      color: var(--body);
+      text-align: center;
+      width: 100%;
+    }
+    .course-link {
+      color: var(--green-dark);
+      text-decoration: underline;
+      text-decoration-skip-ink: none;
+    }
+    .course-cols {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 64px;
+      width: 100%;
+    }
+    .course-col {
+      flex: 1 1 400px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      padding-bottom: 52px;
+    }
+    .course-col-h3 {
+      font-weight: 700;
+      font-size: 24px;
+      line-height: 1.333;
+      color: var(--black);
+    }
+    .course-col-body {
+      font-weight: 300;
+      font-size: 16px;
+      line-height: 1.625;
+      color: var(--body);
+    }
+    /* Course strip — slower to suit 10 images */
+    .course-strip .photo-strip-track {
+      animation-duration: 80s;
+    }
+
+    /* ─── THE PROJECT ─────────────────────────────────── */
+    #project {
+      background: var(--bg-light);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .project-inner {
+      padding-bottom: 0 !important;
+    }
+    .project-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: start;
+    }
+    .project-text { display: flex; flex-direction: column; }
+    .project-body {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .project-body p {
+      font-weight: 300;
+      font-size: 18px;
+      line-height: 1.625;
+      color: var(--body);
+    }
+    .project-map-wrap {
+      position: relative;
+    }
+    .project-map {
+      width: 100%;
+      height: 718px;
+      object-fit: cover;
+      display: block;
+    }
+    /* Photo strip */
+    .photo-strip {
+      overflow: hidden;
+      margin-top: 80px;
+    }
+    .photo-strip-track {
+      display: flex;
+      gap: 0;
+      animation: marquee 40s linear infinite;
+      width: max-content;
+    }
+    .photo-strip-track:hover { animation-play-state: paused; }
+    .photo-strip-track img {
+      height: 340px;
+      width: auto;
+      display: block;
+      flex-shrink: 0;
+      object-fit: cover;
+    }
+    @keyframes marquee {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
     /* ─── RESPONSIVE ──────────────────────────────────── */
     @media (max-width: 1024px) {
       .nav-links { display: none; }
@@ -1215,6 +1460,9 @@
       .section-inner { padding: 80px 32px; }
       #contact .section-inner { padding: 80px 32px; }
       .opp-grid { grid-template-columns: 1fr; }
+      .project-grid { grid-template-columns: 1fr; }
+      .course-cols { gap: 40px; }
+      .project-map { height: 480px; }
       .lease-grid { grid-template-columns: 1fr; }
       .thesis-grid { grid-template-columns: 1fr; }
       .comp-grid { grid-template-columns: 1fr; gap: 64px; }
@@ -1230,6 +1478,8 @@
       .metric-grid { grid-template-columns: 1fr 1fr; }
       .capability-grid { grid-template-columns: repeat(2, 1fr); }
       .suit-panel { padding: 32px; }
+      .project-map { height: 360px; }
+      .photo-strip-track img { height: 240px; }
       .contact-form { padding: 40px 24px; }
       .form-grid { grid-template-columns: 1fr; }
       .footer-nav { grid-template-columns: 1fr 1fr; }

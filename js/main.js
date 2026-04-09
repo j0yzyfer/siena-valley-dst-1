@@ -232,3 +232,151 @@
     }
     alert('Thank you' + (name ? ', ' + name : '') + '. Your request has been received. Our team will be in touch shortly.');
   });
+
+  // ─── Map Lightbox ─────────────────────────────────────────
+  (function () {
+    const lightbox  = document.getElementById('mapLightbox');
+    const stage     = document.getElementById('lightboxStage');
+    const lbImg     = document.getElementById('lightboxImg');
+    const trigger   = document.getElementById('projectMapImg');
+    const triggers  = document.querySelectorAll('[data-lightbox]');
+    const closeBtn  = document.getElementById('lightboxClose');
+    const btnZoomIn = document.getElementById('lbZoomIn');
+    const btnZoomOut= document.getElementById('lbZoomOut');
+    const btnReset  = document.getElementById('lbReset');
+
+    // tx/ty are offsets from center (transform-origin: center center)
+    let scale = 1, tx = 0, ty = 0, fitScale = 1;
+    let dragging = false, dragStartX = 0, dragStartY = 0;
+    const MAX_SCALE = 8, ZOOM_STEP = 0.3;
+
+    function applyTransform() {
+      lbImg.style.transform = `translate(${tx}px, ${ty}px) scale(${scale})`;
+    }
+
+    function computeFitScale() {
+      const r = stage.getBoundingClientRect();
+      const pad = 48;
+      return Math.min(
+        (r.width  - pad * 2) / lbImg.naturalWidth,
+        (r.height - pad * 2) / lbImg.naturalHeight
+      );
+    }
+
+    function resetView() {
+      scale = fitScale; tx = 0; ty = 0;
+      applyTransform();
+    }
+
+    // Zoom toward a specific point in stage coordinates (cx, cy relative to stage center)
+    function zoomAt(newScale, cx, cy) {
+      newScale = Math.min(MAX_SCALE, Math.max(fitScale * 0.8, newScale));
+      // Keep the image point under (cx, cy) fixed
+      tx = cx - (cx - tx) * (newScale / scale);
+      ty = cy - (cy - ty) * (newScale / scale);
+      scale = newScale;
+      applyTransform();
+    }
+
+    function stageCenterOffset(clientX, clientY) {
+      const r = stage.getBoundingClientRect();
+      return { x: clientX - (r.left + r.width / 2), y: clientY - (r.top + r.height / 2) };
+    }
+
+    function open(src) {
+      lbImg.src = src;
+      lightbox.classList.add('open');
+      lightbox.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+      function initView() {
+        fitScale = computeFitScale();
+        resetView();
+      }
+      if (lbImg.naturalWidth && lbImg.src === src) {
+        initView();
+      } else {
+        lbImg.onload = initView;
+      }
+    }
+
+    function close() {
+      lightbox.classList.remove('open');
+      lightbox.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    }
+
+    triggers.forEach(el => el.addEventListener('click', () => open(el.src)));
+    // also wire up any trigger added via direct id (defensive)
+    closeBtn.addEventListener('click', close);
+    lightbox.addEventListener('click', (e) => { if (e.target === lightbox || e.target === stage) close(); });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') close(); });
+
+    // Button zoom toward center
+    btnZoomIn.addEventListener('click',  () => zoomAt(scale + ZOOM_STEP, 0, 0));
+    btnZoomOut.addEventListener('click', () => zoomAt(scale - ZOOM_STEP, 0, 0));
+    btnReset.addEventListener('click',   resetView);
+
+    // Scroll to zoom toward cursor
+    stage.addEventListener('wheel', (e) => {
+      e.preventDefault();
+      const { x, y } = stageCenterOffset(e.clientX, e.clientY);
+      const delta = e.deltaY < 0 ? ZOOM_STEP : -ZOOM_STEP;
+      zoomAt(scale + delta, x, y);
+    }, { passive: false });
+
+    // Mouse drag to pan
+    stage.addEventListener('mousedown', (e) => {
+      if (e.button !== 0) return;
+      dragging = true;
+      dragStartX = e.clientX - tx;
+      dragStartY = e.clientY - ty;
+      stage.classList.add('dragging');
+    });
+    window.addEventListener('mousemove', (e) => {
+      if (!dragging) return;
+      tx = e.clientX - dragStartX;
+      ty = e.clientY - dragStartY;
+      applyTransform();
+    });
+    window.addEventListener('mouseup', () => {
+      dragging = false;
+      stage.classList.remove('dragging');
+    });
+
+    // Touch: single-finger pan, two-finger pinch zoom
+    let lastDist = null, lastMidX = 0, lastMidY = 0;
+    stage.addEventListener('touchstart', (e) => {
+      if (e.touches.length === 1) {
+        dragging = true;
+        dragStartX = e.touches[0].clientX - tx;
+        dragStartY = e.touches[0].clientY - ty;
+      } else if (e.touches.length === 2) {
+        dragging = false;
+        lastDist = Math.hypot(
+          e.touches[0].clientX - e.touches[1].clientX,
+          e.touches[0].clientY - e.touches[1].clientY
+        );
+        lastMidX = (e.touches[0].clientX + e.touches[1].clientX) / 2;
+        lastMidY = (e.touches[0].clientY + e.touches[1].clientY) / 2;
+      }
+    }, { passive: true });
+    stage.addEventListener('touchmove', (e) => {
+      e.preventDefault();
+      if (e.touches.length === 1 && dragging) {
+        tx = e.touches[0].clientX - dragStartX;
+        ty = e.touches[0].clientY - dragStartY;
+        applyTransform();
+      } else if (e.touches.length === 2 && lastDist !== null) {
+        const dist = Math.hypot(
+          e.touches[0].clientX - e.touches[1].clientX,
+          e.touches[0].clientY - e.touches[1].clientY
+        );
+        const midX = (e.touches[0].clientX + e.touches[1].clientX) / 2;
+        const midY = (e.touches[0].clientY + e.touches[1].clientY) / 2;
+        const { x, y } = stageCenterOffset(midX, midY);
+        zoomAt(scale * (dist / lastDist), x, y);
+        lastDist = dist; lastMidX = midX; lastMidY = midY;
+      }
+    }, { passive: false });
+    stage.addEventListener('touchend', () => { dragging = false; lastDist = null; });
+  })();
