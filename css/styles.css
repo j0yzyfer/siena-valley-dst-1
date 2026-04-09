@@ -82,7 +82,9 @@
     .nav-links {
       display: flex;
       align-items: center;
-      gap: 40px;
+      justify-content: space-evenly;
+      flex: 1;
+      padding: 0 40px;
     }
     .nav-links a {
       font-family: 'Montserrat', sans-serif;
