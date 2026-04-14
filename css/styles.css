@@ -1353,7 +1353,6 @@
       max-width: none;
       max-height: none;
       user-select: none;
-      transform-origin: center center;
       display: block;
     }
     .lightbox-close {

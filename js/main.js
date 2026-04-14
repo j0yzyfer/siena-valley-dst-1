@@ -238,6 +238,7 @@
     const lightbox  = document.getElementById('mapLightbox');
     const stage     = document.getElementById('lightboxStage');
     const lbImg     = document.getElementById('lightboxImg');
+    const lbWrap    = document.getElementById('lbImgWrap');
     const trigger   = document.getElementById('projectMapImg');
     const triggers  = document.querySelectorAll('[data-lightbox]');
     const closeBtn  = document.getElementById('lightboxClose');
@@ -251,7 +252,7 @@
     const MAX_SCALE = 8, ZOOM_STEP = 0.3;
 
     function applyTransform() {
-      lbImg.style.transform = `translate(${tx}px, ${ty}px) scale(${scale})`;
+      lbWrap.style.transform = `translate(${tx}px, ${ty}px) scale(${scale})`;
     }
 
     function computeFitScale() {
@@ -289,6 +290,9 @@
       lightbox.setAttribute('aria-hidden', 'false');
       document.body.style.overflow = 'hidden';
       function initView() {
+        // Size the wrap to the image's natural dimensions so % pins land correctly
+        lbWrap.style.width  = lbImg.naturalWidth  + 'px';
+        lbWrap.style.height = lbImg.naturalHeight + 'px';
         fitScale = computeFitScale();
         resetView();
       }
