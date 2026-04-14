@@ -99,19 +99,24 @@
     .map-pin-tooltip-row span:first-child { color: #999; }
     .map-pin-tooltip-row span:last-child  { font-weight: 600; color: #1a1a1a; }
     .portfolio-map-wrap { overflow: visible !important; }
-    /* Lightbox image wrapper — pins ride along with zoom/pan */
+    /* Lightbox image wrapper */
     #lbImgWrap {
       position: relative;
       transform-origin: center center;
       line-height: 0;
       flex-shrink: 0;
     }
-    #lbPinOverlay {
+    /* Screen-space pin container — pins always render at full visual size */
+    #lbPinScreen {
       position: absolute;
       inset: 0;
       pointer-events: none;
+      overflow: visible;
     }
-    .lb-pin { pointer-events: auto; }
+    #lbPinScreen .map-pin {
+      position: absolute;
+      pointer-events: auto;
+    }
   </style>
 </head>
 <body>
@@ -167,33 +172,34 @@
   <div class="lightbox-stage" id="lightboxStage">
     <div id="lbImgWrap">
       <img id="lightboxImg" src="" alt="Siena Valley Club Master Plan" draggable="false" />
-      <div id="lbPinOverlay">
-        <div class="map-pin lb-pin" style="left:30%;top:20%;">
-          <div class="map-pin-badge">01</div>
-          <div class="map-pin-tooltip">
-            <div class="map-pin-tooltip-label">Asset 01</div>
-            <div class="map-pin-tooltip-name">Golf Course / Events Cabin Parcel</div>
-            <div class="map-pin-tooltip-row"><span>Parcel</span><span>2111-301-01-004</span></div>
-            <div class="map-pin-tooltip-row"><span>Size</span><span>123 acres</span></div>
-          </div>
+    </div>
+    <!-- Pins live in screen-space so they render at full size regardless of zoom -->
+    <div id="lbPinScreen">
+      <div class="map-pin lb-pin" data-px="0.30" data-py="0.20">
+        <div class="map-pin-badge">01</div>
+        <div class="map-pin-tooltip">
+          <div class="map-pin-tooltip-label">Asset 01</div>
+          <div class="map-pin-tooltip-name">Golf Course / Events Cabin Parcel</div>
+          <div class="map-pin-tooltip-row"><span>Parcel</span><span>2111-301-01-004</span></div>
+          <div class="map-pin-tooltip-row"><span>Size</span><span>123 acres</span></div>
         </div>
-        <div class="map-pin lb-pin" style="left:28%;top:57%;">
-          <div class="map-pin-badge">02</div>
-          <div class="map-pin-tooltip">
-            <div class="map-pin-tooltip-label">Asset 02</div>
-            <div class="map-pin-tooltip-name">Winding Creek Ranch</div>
-            <div class="map-pin-tooltip-row"><span>Parcel</span><span>2111-311-00-45</span></div>
-            <div class="map-pin-tooltip-row"><span>Size</span><span>277 acres</span></div>
-          </div>
+      </div>
+      <div class="map-pin lb-pin" data-px="0.28" data-py="0.57">
+        <div class="map-pin-badge">02</div>
+        <div class="map-pin-tooltip">
+          <div class="map-pin-tooltip-label">Asset 02</div>
+          <div class="map-pin-tooltip-name">Winding Creek Ranch</div>
+          <div class="map-pin-tooltip-row"><span>Parcel</span><span>2111-311-00-45</span></div>
+          <div class="map-pin-tooltip-row"><span>Size</span><span>277 acres</span></div>
         </div>
-        <div class="map-pin lb-pin" style="left:28%;top:80%;">
-          <div class="map-pin-badge">03</div>
-          <div class="map-pin-tooltip">
-            <div class="map-pin-tooltip-label">Asset 03</div>
-            <div class="map-pin-tooltip-name">Gleaming Sky Ranch</div>
-            <div class="map-pin-tooltip-row"><span>Parcel</span><span>2111-314-00-001</span></div>
-            <div class="map-pin-tooltip-row"><span>Size</span><span>198 acres</span></div>
-          </div>
+      </div>
+      <div class="map-pin lb-pin" data-px="0.28" data-py="0.80">
+        <div class="map-pin-badge">03</div>
+        <div class="map-pin-tooltip">
+          <div class="map-pin-tooltip-label">Asset 03</div>
+          <div class="map-pin-tooltip-name">Gleaming Sky Ranch</div>
+          <div class="map-pin-tooltip-row"><span>Parcel</span><span>2111-314-00-001</span></div>
+          <div class="map-pin-tooltip-row"><span>Size</span><span>198 acres</span></div>
         </div>
       </div>
     </div>

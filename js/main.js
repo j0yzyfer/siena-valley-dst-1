@@ -239,6 +239,7 @@
     const stage     = document.getElementById('lightboxStage');
     const lbImg     = document.getElementById('lightboxImg');
     const lbWrap    = document.getElementById('lbImgWrap');
+    const lbPinScreen = document.getElementById('lbPinScreen');
     const trigger   = document.getElementById('projectMapImg');
     const triggers  = document.querySelectorAll('[data-lightbox]');
     const closeBtn  = document.getElementById('lightboxClose');
@@ -251,8 +252,27 @@
     let dragging = false, dragStartX = 0, dragStartY = 0;
     const MAX_SCALE = 8, ZOOM_STEP = 0.3;
 
+    // Update screen-space positions of lightbox pins so they track the image
+    function updateLbPins() {
+      const r = stage.getBoundingClientRect();
+      const cx = r.width  / 2;
+      const cy = r.height / 2;
+      const w  = lbImg.naturalWidth;
+      const h  = lbImg.naturalHeight;
+      lbPinScreen.querySelectorAll('.lb-pin').forEach(pin => {
+        const px = parseFloat(pin.dataset.px);
+        const py = parseFloat(pin.dataset.py);
+        // Image-center-relative coords, then apply current transform
+        const sx = cx + tx + (px - 0.5) * w * scale;
+        const sy = cy + ty + (py - 0.5) * h * scale;
+        pin.style.left = sx + 'px';
+        pin.style.top  = sy + 'px';
+      });
+    }
+
     function applyTransform() {
       lbWrap.style.transform = `translate(${tx}px, ${ty}px) scale(${scale})`;
+      updateLbPins();
     }
 
     function computeFitScale() {
@@ -290,7 +310,6 @@
       lightbox.setAttribute('aria-hidden', 'false');
       document.body.style.overflow = 'hidden';
       function initView() {
-        // Size the wrap to the image's natural dimensions so % pins land correctly
         lbWrap.style.width  = lbImg.naturalWidth  + 'px';
         lbWrap.style.height = lbImg.naturalHeight + 'px';
         fitScale = computeFitScale();
