@@ -112,31 +112,6 @@
       pointer-events: none;
     }
     .lb-pin { pointer-events: auto; }
-    /* Lightbox pins: tooltip appears to the right (more room in expanded view) */
-    #lbPinOverlay .map-pin-tooltip {
-      bottom: auto;
-      top: 50%;
-      left: calc(100% + 12px);
-      transform: translateY(-50%);
-    }
-    #lbPinOverlay .map-pin-tooltip::after {
-      top: 50%;
-      left: auto;
-      right: 100%;
-      transform: translateY(-50%);
-      border-top-color: transparent;
-      border-right-color: #fff;
-    }
-    #lbPinOverlay .map-pin-tooltip::before {
-      top: 50%;
-      left: auto;
-      right: 100%;
-      transform: translateY(-50%);
-      margin-top: 0;
-      margin-right: -1px;
-      border-top-color: transparent;
-      border-right-color: #e5e5e5;
-    }
   </style>
 </head>
 <body>
