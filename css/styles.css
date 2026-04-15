@@ -42,43 +42,37 @@
     .nav-logo {
       display: flex;
       align-items: center;
-      gap: 2px;
       text-decoration: none;
     }
-    .nav-logo-oq {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-    .nav-logo-oq img { width: 25px; height: 25px; object-fit: contain; }
-    .nav-logo-oq-text {
-      font-family: 'IBM Plex Sans', sans-serif;
-      font-size: 7px;
-      color: var(--green-forest);
-      text-transform: uppercase;
-      line-height: 1.2;
-    }
-    .nav-logo-oq-text strong { font-weight: 600; }
-    .nav-logo-oq-text span { font-weight: 400; display: block; }
-    .nav-divider {
-      width: 1px;
-      height: 26px;
-      background: var(--border);
-      margin: 0 13px;
-    }
-    .nav-logo-sv {
-      display: flex;
-      align-items: center;
-    }
-    .nav-logo-sv-inner {
+    /* Siena Valley DST logo — three-asset composite matching Figma layout */
+    .nav-logo-siena {
       position: relative;
-      width: 108px;
-      height: 26px;
+      /* width = SIENA wordmark (97px) + gap (6px) + sun (34px) */
+      width: 137px;
+      height: 34px;
     }
-    .nav-logo-sv-inner img { position: absolute; display: block; }
-    .sv-wordmark { top: 1px; left: 0; width: 74px; height: 14px; }
-    .sv-dst      { top: 18px; left: 45px; width: 29px; height: 8px; }
-    .sv-star     { top: 0; left: 79px; width: 26px; height: 26px; }
+    .nav-logo-siena img { position: absolute; display: block; }
+    /* "SIENA" wordmark — top-left, scaled from Figma 97.255×18.307 */
+    .nav-logo-siena-word {
+      top: 4px;
+      left: 0;
+      width: 97px;
+      height: 18px;
+    }
+    /* "VALLEY DST MANAGEMENT" subtext — below wordmark */
+    .nav-logo-siena-sub {
+      top: 27px;
+      left: 0;
+      width: 97px;
+      height: 5px;
+    }
+    /* Sun/starburst icon — right of wordmark, vertically centered */
+    .nav-logo-siena-sun {
+      top: 0;
+      left: 103px;
+      width: 34px;
+      height: 34px;
+    }
     .nav-links {
       display: flex;
       align-items: center;
