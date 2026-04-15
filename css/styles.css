@@ -1480,6 +1480,21 @@
       line-height: 1.625;
       color: var(--body);
     }
+    /* Aerial course image (content-width, lightbox-enabled) */
+    .course-aerial-wrap {
+      width: 100%;
+      aspect-ratio: 4096 / 1738;
+      overflow: hidden;
+      border-radius: 4px;
+    }
+    .course-aerial-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      cursor: zoom-in;
+    }
+
     /* Course strip — slower to suit 10 images */
     .course-strip .photo-strip-track {
       animation-duration: 80s;

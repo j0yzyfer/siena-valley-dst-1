@@ -304,8 +304,9 @@
       return { x: clientX - (r.left + r.width / 2), y: clientY - (r.top + r.height / 2) };
     }
 
-    function open(src) {
+    function open(src, showPins) {
       lbImg.src = src;
+      lbPinScreen.style.display = showPins ? '' : 'none';
       lightbox.classList.add('open');
       lightbox.setAttribute('aria-hidden', 'false');
       document.body.style.overflow = 'hidden';
@@ -328,7 +329,7 @@
       document.body.style.overflow = '';
     }
 
-    triggers.forEach(el => el.addEventListener('click', () => open(el.src)));
+    triggers.forEach(el => el.addEventListener('click', () => open(el.src, 'lightboxPins' in el.dataset)));
     // also wire up any trigger added via direct id (defensive)
     closeBtn.addEventListener('click', close);
     lightbox.addEventListener('click', (e) => { if (e.target === lightbox || e.target === stage) close(); });
