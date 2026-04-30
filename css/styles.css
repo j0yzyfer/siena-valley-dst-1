@@ -240,6 +240,49 @@
       color: var(--white);
     }
     .hero-stat-value.gold { color: var(--gold); }
+    .hero-stat-value sup {
+      font-size: 11px;
+      vertical-align: super;
+      line-height: 0;
+      font-weight: 700;
+    }
+    .hero-footnotes-bar {
+      background: #f5f4f0;
+      border-bottom: 1px solid #e5e5e5;
+    }
+    .hero-footnotes-inner {
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 20px 48px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .hero-footnotes-inner p {
+      font-size: 10.5px;
+      line-height: 1.55;
+      color: #666;
+      margin: 0;
+    }
+    .hero-footnotes-inner sup {
+      font-size: 8px;
+      vertical-align: super;
+      margin-right: 2px;
+    }
+    .comp-body {
+      font-size: 15px;
+      line-height: 1.7;
+      color: var(--body);
+      margin-bottom: 0;
+    }
+    .thesis-intro {
+      font-size: 15px;
+      line-height: 1.7;
+      color: var(--body);
+      max-width: 640px;
+      margin: 16px auto 0;
+      text-align: center;
+    }
 
     /* ─── SECTION SHARED ──────────────────────────────── */
     section { width: 100%; }
@@ -336,18 +379,19 @@
     #portfolio { background: var(--bg-light); }
     .portfolio-header {
       display: flex;
-      align-items: flex-end;
-      justify-content: space-between;
+      align-items: center;
+      justify-content: center;
       margin-bottom: 80px;
     }
-    .portfolio-header-left { max-width: 672px; }
+    .portfolio-header-left { width: 100%; }
     .portfolio-subtitle {
-      font-weight: 300;
-      font-style: italic;
-      font-size: 14px;
-      line-height: 1.43;
+      font-weight: 400;
+      font-style: normal;
+      font-size: 16px;
+      line-height: 1.625;
       color: var(--body);
-      margin-top: 8px;
+      margin: 0 0 40px 0;
+      width: 100%;
     }
     /* ── New asset grid: gap-px on #e5e5e5 bg = hairline dividers ── */
     .asset-grid-new {
@@ -1041,11 +1085,19 @@
     }
     .suit-dot.gold { background: var(--gold); }
     .suit-dot.grey { background: var(--border); }
+    .suitability-note-bar {
+      width: 100%;
+      padding: 16px 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
     .suitability-note {
       text-align: center;
       font-style: italic;
       font-size: 10px;
       color: var(--body);
+      margin: 0;
     }
 
     /* ─── SECTION 10: RISKS ───────────────────────────── */
@@ -1223,19 +1275,17 @@
     /* ─── FOOTER ──────────────────────────────────────── */
     footer {
       background: var(--white);
-      border-top: 1px solid var(--border);
-    }
-    .footer-inner {
-      max-width: 1440px;
-      margin: 0 auto;
-      padding: 97px 48px 96px;
     }
     .footer-disclaimer {
       background: var(--bg-light);
       border-bottom: 1px solid var(--border);
       padding: 39px 80px 41px;
       text-align: center;
-      margin-bottom: 80px;
+    }
+    .footer-inner {
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 97px 48px 96px;
     }
     .footer-disclaimer p {
       font-weight: 400;
